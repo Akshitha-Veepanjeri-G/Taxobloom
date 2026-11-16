@@ -290,6 +290,14 @@ def get_llm_description(name):
 
     return FALLBACK_DESCRIPTIONS.get(name.lower(), f"Botanical specimen profile for {name}.")
 
+# ================= NO-CACHE MIDDLEWARE =================
+@app.after_request
+def add_header(response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
 # ================= ROUTES =================
 
 # ✅ LOGIN (FIRST PAGE)

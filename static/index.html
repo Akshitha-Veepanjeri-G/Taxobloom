@@ -218,6 +218,45 @@
                 color: black !important;
             }
         }
+
+        /* 🛡️ Strict Element Constraints (Never allow oversized icons or blown up SVGs) */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
+            max-width: 100%;
+        }
+
+        .brand-logo {
+            width: 32px !important;
+            height: 32px !important;
+            min-width: 32px !important;
+            max-width: 32px !important;
+            min-height: 32px !important;
+            max-height: 32px !important;
+            object-fit: contain !important;
+        }
+
+        #diagramImg {
+            max-height: 195px !important;
+            width: 100% !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+
+        #modalImg {
+            max-height: 72vh !important;
+            max-width: 90vw !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
     </style>
 </head>
 
@@ -243,9 +282,8 @@
         <!-- Brand with New Vector Logo -->
         <div class="flex items-center gap-3">
             <a href="/dashboard" class="flex items-center gap-3 group">
-                <img src="/static/logo.svg" alt="TaxoBloom Logo" width="36" height="36"
-                    style="width: 36px; height: 36px; min-width: 36px; max-width: 36px; max-height: 36px;"
-                    class="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.45)] transition hover:scale-110 cursor-pointer" />
+                <img src="/static/logo.svg" alt="TaxoBloom Logo" width="32" height="32"
+                    class="brand-logo drop-shadow-[0_0_10px_rgba(168,85,247,0.45)] transition hover:scale-105 cursor-pointer" />
                 <div>
                     <h1 class="text-xl font-bold tracking-tight text-white leading-tight">Taxo<span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300">Bloom</span>
@@ -316,8 +354,8 @@
                     class="cursor-pointer p-8 sm:p-10 rounded-2xl border-2 border-dashed border-purple-400/30 hover:border-purple-400/70 bg-gray-900/40 hover:bg-purple-950/20 transition-all duration-300 group relative mb-5 flex flex-col items-center justify-center">
                     
                     <!-- Floating Upload Glyph -->
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500/20 to-pink-500/20 border border-white/10 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform duration-300 shadow-inner mb-3">
-                        <svg class="w-8 h-8 text-purple-300 group-hover:text-yellow-300 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-500/20 to-pink-500/20 border border-white/10 flex items-center justify-center text-purple-300 group-hover:scale-105 transition-transform duration-300 shadow-inner mb-2.5">
+                        <svg class="w-5 h-5 text-purple-300 group-hover:text-yellow-300 transition-colors" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
                         </svg>
                     </div>
@@ -469,11 +507,11 @@
 
                     <!-- Uploaded Specimen High-Res Framing -->
                     <div class="relative overflow-hidden rounded-2xl border border-gray-700/80 shadow-2xl bg-gray-950 mb-5 group">
-                        <img id="resultImage" class="w-full h-80 sm:h-96 object-cover rounded-2xl transition duration-300 group-hover:scale-105" />
+                        <img id="resultImage" class="w-full max-h-72 sm:max-h-80 object-cover rounded-2xl transition duration-300 group-hover:scale-105" style="max-height: 320px; object-fit: cover;" />
                         
                         <!-- Studio Watermark Badge -->
                         <div class="absolute bottom-3 left-3 px-3 py-1.5 bg-black/80 backdrop-blur-md rounded-xl text-xs text-yellow-300 font-semibold border border-yellow-300/30 flex items-center gap-1.5 shadow-lg">
-                            <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-3.5 h-3.5 text-emerald-400" width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                             </svg>
                             <span>Input Verified</span>
@@ -549,22 +587,24 @@
                         </div>
                     </div>
 
-                    <!-- 🏛️ LINNAEAN TAXONOMY HIERARCHY -->
+                    <!-- LINNAEAN TAXONOMY HIERARCHY -->
                     <div class="mb-6">
                         <div class="mb-3 flex items-center justify-between">
                             <h4 class="text-xs font-semibold uppercase tracking-wider text-yellow-300/90 flex items-center gap-2">
-                                <span>🏛️ Linnaean Taxonomy Hierarchy</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                                <span>Linnaean Taxonomy Hierarchy</span>
                             </h4>
                             <span class="text-[10px] text-gray-400 font-mono-code">Rank Tiered</span>
                         </div>
                         <div id="taxonomyBox" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm"></div>
                     </div>
 
-                    <!-- ✅ PROMPT: "Do you want to see floral formula, diagram, description?" -->
+                    <!-- PROMPT: "Explore detailed floral anatomy" -->
                     <div id="showImagesPrompt" class="mt-6 pt-5 border-t border-gray-700/60 hidden">
                         <div class="p-4 rounded-2xl bg-gradient-to-r from-purple-900/20 via-purple-900/10 to-transparent border border-purple-500/30">
                             <p class="font-semibold text-sm mb-1 text-gray-100 flex items-center gap-2">
-                                <span>🔍</span> Explore Detailed Floral Anatomy?
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span>Explore Detailed Floral Anatomy?</span>
                             </p>
                             <p class="text-xs text-gray-400 mb-4 font-light">
                                 Unlock standardized Linnaean shorthand formula, high-resolution floral diagram, and comprehensive botanical description.
@@ -573,7 +613,7 @@
                                 <button id="yesBtn"
                                     class="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl font-medium text-xs sm:text-sm transition shadow-lg shadow-emerald-950/40 active:scale-95 flex items-center gap-2">
                                     <span>Yes, Unlock Anatomy</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                     </svg>
                                 </button>
@@ -585,14 +625,15 @@
                         </div>
                     </div>
 
-                    <!-- 🌺 ANATOMY LABORATORY CONTAINER (Formula & Diagram) -->
+                    <!-- ANATOMY LABORATORY CONTAINER (Formula & Diagram) -->
                     <div id="imagesContainer"
                         class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6 hidden pt-5 border-t border-gray-700/60 fade-in">
                         <!-- Floral Formula Box -->
                         <div class="p-4 rounded-2xl bg-gray-900/40 border border-gray-700/70">
                             <div class="flex items-center justify-between mb-2">
                                 <p class="font-semibold text-xs text-yellow-300 uppercase tracking-wider flex items-center gap-1.5">
-                                    <span>🧪</span> Floral Formula
+                                    <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                                    <span>Floral Formula</span>
                                 </p>
                                 <span class="text-[10px] text-purple-300 bg-purple-500/15 border border-purple-500/30 px-2 py-0.5 rounded-full font-medium">Shorthand</span>
                             </div>
@@ -606,8 +647,8 @@
                             <!-- Interactive Symbol Breakdown Chips -->
                             <div id="formulaGuideBox" class="mt-3 hidden">
                                 <div class="text-[10px] uppercase font-semibold text-gray-400 mb-1.5 flex items-center justify-between">
-                                    <span>💡 Botanical Key</span>
-                                    <span class="text-gray-500">Tap to inspect</span>
+                                    <span>Linnaean Key</span>
+                                    <span class="text-gray-500 text-[9px]">Tap to inspect</span>
                                 </div>
                                 <div id="formulaBreakdown" class="flex flex-wrap gap-1.5"></div>
                             </div>
@@ -617,35 +658,40 @@
                         <div class="p-4 rounded-2xl bg-gray-900/40 border border-gray-700/70">
                             <div class="flex items-center justify-between mb-2">
                                 <p class="font-semibold text-xs text-yellow-300 uppercase tracking-wider flex items-center gap-1.5">
-                                    <span>📐</span> Floral Diagram
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                    <span>Floral Diagram</span>
                                 </p>
                                 <span class="text-[10px] text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full font-medium">Zoomable</span>
                             </div>
                             <div class="relative group cursor-zoom-in overflow-hidden rounded-2xl border border-gray-700/80 bg-gray-950 shadow-md">
                                 <img id="diagramImg"
-                                    class="w-full object-contain max-h-52 p-2 group-hover:scale-105 transition duration-300" />
+                                    class="w-full object-contain p-2 group-hover:scale-105 transition duration-300"
+                                    style="max-height: 195px; width: 100%; height: auto; object-fit: contain;" />
                                 <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                                     <span class="px-3.5 py-1.5 bg-black/85 backdrop-blur-md rounded-xl text-xs text-yellow-300 font-semibold border border-yellow-300/30 flex items-center gap-1.5 shadow-xl">
-                                        🔍 Inspect High-Res
+                                        Inspect High-Res
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 🧠 BOTANICAL PROFILE DESCRIPTION -->
+                    <!-- BOTANICAL PROFILE DESCRIPTION -->
                     <div id="llmDescription"
                         class="mt-6 text-gray-300 text-sm leading-relaxed hidden pt-5 border-t border-gray-700/60 fade-in">
                         <div class="flex items-center justify-between mb-2">
-                            <h4 class="font-semibold text-yellow-300 flex items-center gap-2">
-                                <span>📖</span> Botanical Description
+                            <h4 class="font-semibold text-yellow-300 flex items-center gap-2 text-xs uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                                <span>Botanical Description</span>
                             </h4>
                             <!-- Speech synthesis listen button -->
                             <button id="speakBtn" type="button"
                                 class="text-xs px-3 py-1.5 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 hover:border-purple-400/40 text-gray-200 hover:text-white transition flex items-center gap-1.5 shadow-sm active:scale-95"
                                 title="Read description aloud">
-                                <span id="speakIcon">🔊</span>
-                                <span id="speakLabel" class="font-medium">Listen</span>
+                                <svg id="speakIconSvg" class="w-3.5 h-3.5 text-purple-300" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z"/>
+                                </svg>
+                                <span id="speakLabel" class="font-medium text-[11px]">Listen</span>
                             </button>
                         </div>
                         <p id="descText" class="bg-gray-900/50 p-4 sm:p-5 rounded-2xl border border-gray-700/60 font-light leading-relaxed text-gray-200"></p>
@@ -667,11 +713,11 @@
                 ✕
             </button>
             <div class="flex items-center gap-2 mb-3 self-start">
-                <span class="text-base">📐</span>
-                <p class="text-sm font-semibold text-yellow-300">Botanical Floral Diagram &bull; High-Resolution Diagnostic Inspection</p>
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <p class="text-xs font-semibold uppercase tracking-wider text-yellow-300">Botanical Floral Diagram &bull; High-Resolution Diagnostic Inspection</p>
             </div>
-            <div class="w-full flex items-center justify-center overflow-auto max-h-[82vh] rounded-2xl bg-[#080d1a] border border-gray-800 p-2 shadow-inner">
-                <img id="modalImg" class="max-h-[78vh] w-auto object-contain rounded-xl" />
+            <div class="w-full flex items-center justify-center overflow-auto max-h-[80vh] rounded-2xl bg-[#080d1a] border border-gray-800 p-2 shadow-inner">
+                <img id="modalImg" class="w-auto object-contain rounded-xl" style="max-height: 74vh; max-width: 100%; height: auto; object-fit: contain;" />
             </div>
         </div>
     </div>
@@ -1012,33 +1058,33 @@
             // Trigger celebration confetti
             triggerBloomCelebration();
 
-            // Populate Taxonomy Hierarchy Grid with luxury taxonomic cards
+            // Populate Taxonomy Hierarchy Grid with luxury taxonomic cards (Clean, No Emojis)
             const taxonomyBox = document.getElementById("taxonomyBox");
             taxonomyBox.innerHTML = "";
 
             if (data.details) {
-                const rankIcons = {
-                    "kingdom": "👑",
-                    "division": "🌿",
-                    "flower_class": "☘️",
-                    "flower_order": "🌾",
-                    "flower_family": "🌺",
-                    "genus": "🔬",
-                    "species": "🧬",
-                    "scientific_name": "✨"
+                const rankColors = {
+                    "kingdom": "bg-yellow-400",
+                    "division": "bg-emerald-400",
+                    "flower_class": "bg-teal-400",
+                    "flower_order": "bg-sky-400",
+                    "flower_family": "bg-pink-400",
+                    "genus": "bg-purple-400",
+                    "species": "bg-amber-400",
+                    "scientific_name": "bg-fuchsia-400"
                 };
 
                 for (const [k, v] of Object.entries(data.details)) {
                     if (!v) continue;
                     if (k.includes("floral")) continue;
 
-                    const icon = rankIcons[k.toLowerCase()] || "🏛️";
+                    const dotColor = rankColors[k.toLowerCase()] || "bg-yellow-400";
                     const formattedKey = k.replace("flower_", "").replace("_", " ");
 
                     taxonomyBox.innerHTML += `
-                        <div class="p-3 px-3.5 rounded-xl bg-gray-900/50 hover:bg-gray-900/80 border border-gray-700/60 hover:border-yellow-300/40 flex justify-between items-center transition group shadow-sm">
+                        <div class="p-2.5 px-3.5 rounded-xl bg-gray-900/50 hover:bg-gray-900/80 border border-gray-700/60 hover:border-yellow-300/40 flex justify-between items-center transition group shadow-sm">
                             <div class="flex items-center gap-2">
-                                <span class="text-xs opacity-75">${icon}</span>
+                                <span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>
                                 <span class="text-gray-400 capitalize text-xs font-medium group-hover:text-gray-300 transition">
                                     ${formattedKey}:
                                 </span>
@@ -1108,7 +1154,6 @@
 
         // Speech Synthesis Read Aloud
         const speakBtn = document.getElementById("speakBtn");
-        const speakIcon = document.getElementById("speakIcon");
         const speakLabel = document.getElementById("speakLabel");
 
         speakBtn.addEventListener("click", () => {
@@ -1117,7 +1162,6 @@
 
             if (window.speechSynthesis.speaking) {
                 window.speechSynthesis.cancel();
-                speakIcon.textContent = "🔊";
                 speakLabel.textContent = "Listen";
                 return;
             }
@@ -1127,11 +1171,9 @@
             utterance.pitch = 1.0;
 
             utterance.onstart = () => {
-                speakIcon.textContent = "⏹️";
                 speakLabel.textContent = "Stop";
             };
             utterance.onend = utterance.onerror = () => {
-                speakIcon.textContent = "🔊";
                 speakLabel.textContent = "Listen";
             };
 

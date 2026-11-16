@@ -174,6 +174,29 @@
                 transform: translateY(-8px);
             }
         }
+
+        /* 🛡️ Strict Icon, Image and Logo Constraints (Never allow oversized scaling) */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
+            max-width: 100%;
+        }
+
+        .brand-logo {
+            width: 32px !important;
+            height: 32px !important;
+            min-width: 32px !important;
+            max-width: 32px !important;
+            min-height: 32px !important;
+            max-height: 32px !important;
+            object-fit: contain !important;
+        }
     </style>
 </head>
 
@@ -200,15 +223,14 @@
 
         <!-- Brand Emblem & System Status -->
         <div class="flex items-center gap-3">
-            <img src="/static/logo.svg" alt="TaxoBloom Logo" width="36" height="36"
-                style="width: 36px; height: 36px; min-width: 36px; max-width: 36px; max-height: 36px;"
-                class="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.45)] transition hover:scale-110 cursor-pointer" />
+            <img src="/static/logo.svg" alt="TaxoBloom Logo" width="32" height="32"
+                class="brand-logo drop-shadow-[0_0_10px_rgba(168,85,247,0.45)] transition hover:scale-105 cursor-pointer" />
             <div>
                 <h1 class="text-xl font-bold tracking-tight text-white leading-tight">Taxo<span
                         class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300">Bloom</span>
                 </h1>
                 <div class="flex items-center gap-1.5 text-[11px] text-gray-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span class="font-medium text-emerald-400/90">System Online</span>
                 </div>
             </div>
@@ -273,23 +295,11 @@
         <!-- Central Hero Card -->
         <div class="blur-card p-8 sm:p-12 rounded-3xl w-full text-center relative overflow-hidden shadow-2xl">
 
-            <!-- Floating Orbital Emblem with Custom Vector Logo -->
-            <div class="relative w-24 h-24 mx-auto mb-6 float-gentle flex items-center justify-center" style="width: 96px; height: 96px; max-width: 96px; max-height: 96px;">
-                <div class="orbit-ring"></div>
-                <div
-                    class="w-full h-full rounded-full bg-gradient-to-tr from-purple-600/25 via-fuchsia-500/15 to-pink-500/20 border border-white/20 flex items-center justify-center p-3.5 shadow-2xl backdrop-blur-md"
-                    style="width: 96px; height: 96px;">
-                    <img src="/static/logo.svg" alt="TaxoBloom Emblem" width="64" height="64"
-                        style="width: 64px; height: 64px; max-width: 64px; max-height: 64px;"
-                        class="w-16 h-16 object-contain drop-shadow-[0_0_16px_rgba(236,72,153,0.6)]" />
-                </div>
-            </div>
-
             <!-- Dynamic Live Greeting Badge -->
             <div
-                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-yellow-300 mb-4 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-yellow-300 animate-ping"></span>
-                <span id="dynamicGreeting" class="font-medium">Welcome back &bull; AI Botanical System Ready</span>
+                class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-yellow-300 mb-6 shadow-sm">
+                <img src="/static/logo.svg" alt="" width="16" height="16" class="w-4 h-4 object-contain inline-block shrink-0" style="width: 16px; height: 16px;" />
+                <span id="dynamicGreeting" class="font-medium">Welcome &bull; AI Botanical System Ready</span>
             </div>
 
             <!-- Headline -->
@@ -378,126 +388,126 @@
             <div class="marquee-container py-2">
                 <div class="marquee-track">
 
-                    <!-- Set 1 of Flower Specimens -->
+                    <!-- Set 1 of Flower Specimens (Clean, Modern Botanical Badges - No Emojis) -->
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌺</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-fuchsia-400 shrink-0 shadow-[0_0_8px_rgba(232,121,249,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Hibiscus</p>
-                            <p class="text-[10px] text-gray-400 italic">Hibiscus rosa-sinensis</p>
+                            <p class="text-[10px] text-gray-400 italic">H. rosa-sinensis</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 ml-1">Malvaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/20 ml-1">Malvaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌻</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Sunflower</p>
-                            <p class="text-[10px] text-gray-400 italic">Helianthus annuus</p>
+                            <p class="text-[10px] text-gray-400 italic">H. annuus</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 ml-1">Asteraceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/20 ml-1">Asteraceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌹</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400 shrink-0 shadow-[0_0_8px_rgba(251,113,133,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Rose</p>
-                            <p class="text-[10px] text-gray-400 italic">Rosa indica</p>
+                            <p class="text-[10px] text-gray-400 italic">R. indica</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 ml-1">Rosaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/20 ml-1">Rosaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🪷</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-teal-400 shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Lotus</p>
-                            <p class="text-[10px] text-gray-400 italic">Nelumbo nucifera</p>
+                            <p class="text-[10px] text-gray-400 italic">N. nucifera</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 ml-1">Nelumbonaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/15 text-teal-300 border border-teal-500/20 ml-1">Nelumbonaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌸</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-pink-400 shrink-0 shadow-[0_0_8px_rgba(244,114,182,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Periwinkle</p>
-                            <p class="text-[10px] text-gray-400 italic">Catharanthus roseus</p>
+                            <p class="text-[10px] text-gray-400 italic">C. roseus</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 ml-1">Apocynaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/15 text-pink-300 border border-pink-500/20 ml-1">Apocynaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🦋</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shrink-0 shadow-[0_0_8px_rgba(96,165,250,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Clitoria</p>
-                            <p class="text-[10px] text-gray-400 italic">Clitoria ternatea</p>
+                            <p class="text-[10px] text-gray-400 italic">C. ternatea</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 ml-1">Fabaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 border border-blue-500/20 ml-1">Fabaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">💐</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_8px_rgba(52,211,153,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Ixora</p>
-                            <p class="text-[10px] text-gray-400 italic">Ixora coccinea</p>
+                            <p class="text-[10px] text-gray-400 italic">I. coccinea</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 ml-1">Rubiaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/20 ml-1">Rubiaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌾</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shrink-0 shadow-[0_0_8px_rgba(192,132,252,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Crinum</p>
-                            <p class="text-[10px] text-gray-400 italic">Crinum asiaticum</p>
+                            <p class="text-[10px] text-gray-400 italic">C. asiaticum</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 ml-1">Amaryllidaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/20 ml-1">Amaryllidaceae</span>
                     </a>
 
                     <!-- Duplicate for infinite seamless marquee loop -->
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌺</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-fuchsia-400 shrink-0 shadow-[0_0_8px_rgba(232,121,249,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Hibiscus</p>
-                            <p class="text-[10px] text-gray-400 italic">Hibiscus rosa-sinensis</p>
+                            <p class="text-[10px] text-gray-400 italic">H. rosa-sinensis</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 ml-1">Malvaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/20 ml-1">Malvaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌻</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Sunflower</p>
-                            <p class="text-[10px] text-gray-400 italic">Helianthus annuus</p>
+                            <p class="text-[10px] text-gray-400 italic">H. annuus</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 ml-1">Asteraceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/20 ml-1">Asteraceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🌹</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-400 shrink-0 shadow-[0_0_8px_rgba(251,113,133,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Rose</p>
-                            <p class="text-[10px] text-gray-400 italic">Rosa indica</p>
+                            <p class="text-[10px] text-gray-400 italic">R. indica</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 ml-1">Rosaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/20 ml-1">Rosaceae</span>
                     </a>
 
                     <a href="/predict-page"
-                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
-                        <span class="text-2xl group-hover:scale-125 transition-transform">🪷</span>
+                        class="p-3 px-3.5 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-2.5 shrink-0 group active:scale-95 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-teal-400 shrink-0 shadow-[0_0_8px_rgba(45,212,191,0.6)]"></span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Lotus</p>
-                            <p class="text-[10px] text-gray-400 italic">Nelumbo nucifera</p>
+                            <p class="text-[10px] text-gray-400 italic">N. nucifera</p>
                         </div>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 ml-1">Nelumbonaceae</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/15 text-teal-300 border border-teal-500/20 ml-1">Nelumbonaceae</span>
                     </a>
 
                 </div>
@@ -506,13 +516,13 @@
 
 
         <!-- ============================================================= -->
-        <!-- CORE PLATFORM PILLARS                                         -->
+        <!-- CORE PLATFORM PILLARS -->
         <!-- ============================================================= -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="blur-card p-6 rounded-3xl hover:border-yellow-300/30 transition group shadow-lg">
                 <div
-                    class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-300 mb-4 group-hover:scale-110 transition shadow-inner">
-                    <svg class="w-6 h-6 text-purple-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    class="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-300 mb-4 group-hover:scale-105 transition shadow-inner">
+                    <svg class="w-5 h-5 text-purple-300" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
                     </svg>
                 </div>
@@ -527,8 +537,8 @@
 
             <div class="blur-card p-6 rounded-3xl hover:border-yellow-300/30 transition group shadow-lg">
                 <div
-                    class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300 mb-4 group-hover:scale-110 transition shadow-inner">
-                    <svg class="w-6 h-6 text-emerald-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 mb-4 group-hover:scale-105 transition shadow-inner">
+                    <svg class="w-5 h-5 text-emerald-300" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
                     </svg>
                 </div>
@@ -543,8 +553,8 @@
 
             <div class="blur-card p-6 rounded-3xl hover:border-yellow-300/30 transition group shadow-lg">
                 <div
-                    class="w-12 h-12 rounded-2xl bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-300 mb-4 group-hover:scale-110 transition shadow-inner">
-                    <svg class="w-6 h-6 text-pink-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    class="w-10 h-10 rounded-xl bg-pink-500/15 border border-pink-500/30 flex items-center justify-center text-pink-300 mb-4 group-hover:scale-105 transition shadow-inner">
+                    <svg class="w-5 h-5 text-pink-300" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.942A4.5 4.5 0 0115.9 16.5H8.1a4.5 4.5 0 01-2.33-.658L4.2 14.9" />
                     </svg>
                 </div>
