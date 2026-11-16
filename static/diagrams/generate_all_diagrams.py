@@ -171,7 +171,7 @@ def create_rose_svg():
     lines.append(label_leader(cx + 38, cy + 345, cx + 180, cy + 355, "Bract", "Anterior floral position", "left"))
     
     # Legend
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#22c55e" font-weight="700">K:</tspan> 5 quincuncial &bull; <tspan fill="#f43f5e" font-weight="700">C:</tspan> 5(&#8734;) polypetalous &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> &#8734; polyandrous dithecous &bull; <tspan fill="#f59e0b" font-weight="700">G:</tspan> &#8734; apocarpous in hypanthium'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#22c55e" font-weight="700">K:</tspan> 5 quincuncial &#8226; <tspan fill="#f43f5e" font-weight="700">C:</tspan> 5(&#8734;) polypetalous &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> &#8734; polyandrous dithecous &#8226; <tspan fill="#f59e0b" font-weight="700">G:</tspan> &#8734; apocarpous in hypanthium'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -258,7 +258,7 @@ def create_lotus_svg():
     lines.append(label_leader(cx - 22, cy - 10, cx - 290, cy + 190, "Gynoecium: G(∞)", "Free carpels embedded in separate pits", "right"))
     lines.append(label_leader(cx + 40, cy + 345, cx + 180, cy + 355, "Bract", "Anterior floral position", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#22c55e" font-weight="700">K:</tspan> 2-4 sepaloid &bull; <tspan fill="#f472b6" font-weight="700">C:</tspan> &#8734; spirally polypetalous &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> &#8734; appendaged &bull; <tspan fill="#f59e0b" font-weight="700">G:</tspan> &#8734; apocarpous in spongy torus'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#22c55e" font-weight="700">K:</tspan> 2-4 sepaloid &#8226; <tspan fill="#f472b6" font-weight="700">C:</tspan> &#8734; spirally polypetalous &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> &#8734; appendaged &#8226; <tspan fill="#f59e0b" font-weight="700">G:</tspan> &#8734; apocarpous in spongy torus'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -376,7 +376,7 @@ def create_clitoria_svg():
     lines.append(label_leader(cx - 295, cy - 10, cx - 290, cy + 240, "Bracteoles", "2 prominent lateral bracteoles", "right"))
     lines.append(label_leader(cx + 38, cy + 345, cx + 180, cy + 355, "Bract", "Anterior floral position", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#22c55e" font-weight="700">K:</tspan> (5) valvate odd-anterior &bull; <tspan fill="#60a5fa" font-weight="700">C:</tspan> 1+2+(2) vexillary &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> (9)+1 diadelphous &bull; <tspan fill="#f59e0b" font-weight="700">G:</tspan> 1 marginal'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#22c55e" font-weight="700">K:</tspan> (5) valvate odd-anterior &#8226; <tspan fill="#60a5fa" font-weight="700">C:</tspan> 1+2+(2) vexillary &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> (9)+1 diadelphous &#8226; <tspan fill="#f59e0b" font-weight="700">G:</tspan> 1 marginal'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -463,7 +463,7 @@ def create_sunflower_svg():
     lines.append(label_leader(cx, cy + 20, cx - 290, cy + 200, "Basal Placentation", "Single solitary basal ovule", "right"))
     lines.append(label_leader(cx + 45, cy + 345, cx + 180, cy + 355, "Chaffy Palea (Bract)", "Subtending floret bract", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> pappus scales &bull; <tspan fill="#fde047" font-weight="700">C:</tspan> (5) tubular valvate &bull; <tspan fill="#eab308" font-weight="700">A:</tspan> (5) syngenesious epipetalous &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior single basal ovule'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> pappus scales &#8226; <tspan fill="#fde047" font-weight="700">C:</tspan> (5) tubular valvate &#8226; <tspan fill="#eab308" font-weight="700">A:</tspan> (5) syngenesious epipetalous &#8226; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior single basal ovule'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -568,11 +568,11 @@ def create_calotropis_svg():
     lines.append(label_leader(cx + 190, cy + 60, cx + 290, cy + 20, "Corolla: C(5)", "Gamopetalous, valvate lobes", "left"))
     lines.append(label_leader(cx + 135, cy + 120, cx + 290, cy + 150, "Staminal Corona", "5 fleshy nectariferous horn lobes", "left"))
     lines.append(label_leader(cx - 72, cy - 40, cx - 290, cy - 60, "Pentagonal Stigma Head", "Anthers adnate forming Gynostegium", "right"))
-    lines.append(label_leader(cx - 54, cy + 30, cx - 290, cy + 60, "Pollinia & Translator", "Paired pollen masses + Corpusculum", "right"))
+    lines.append(label_leader(cx - 54, cy + 30, cx - 290, cy + 60, "Pollinia &amp; Translator", "Paired pollen masses + Corpusculum", "right"))
     lines.append(label_leader(cx - 22, cy, cx - 290, cy + 180, "Bicarpellary Ovaries", "2 free ovaries, marginal placentation", "right"))
     lines.append(label_leader(cx + 38, cy + 345, cx + 180, cy + 355, "Bract", "Anterior floral position", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> 5 quincuncial &bull; <tspan fill="#c084fc" font-weight="700">C:</tspan> (5) valvate &bull; <tspan fill="#f472b6" font-weight="700">Corona:</tspan> 5 lobes &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> 5 gynostegium pollinia &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) free ovaries'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> 5 quincuncial &#8226; <tspan fill="#c084fc" font-weight="700">C:</tspan> (5) valvate &#8226; <tspan fill="#f472b6" font-weight="700">Corona:</tspan> 5 lobes &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> 5 gynostegium pollinia &#8226; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) free ovaries'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -666,7 +666,7 @@ def create_crinum_svg():
     lines.append(label_leader(cx - 32, cy + 20, cx - 290, cy + 200, "Axile Placentation", "Multiple ovules per trilocular cell", "right"))
     lines.append(label_leader(cx + 45, cy + 345, cx + 180, cy + 355, "Spathaceous Bract", "Subtending umbel spathe", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#38bdf8" font-weight="700">P:</tspan> (3+3) petaloid tepals &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> 3+3 epiphyllous versatile &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (3) syncarpous trilocular inferior axile'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#38bdf8" font-weight="700">P:</tspan> (3+3) petaloid tepals &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> 3+3 epiphyllous versatile &#8226; <tspan fill="#22c55e" font-weight="700">G:</tspan> (3) syncarpous trilocular inferior axile'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -765,7 +765,7 @@ def create_ixora_svg():
     lines.append(label_leader(cx - 24, cy, cx - 290, cy + 190, "Axile Placentation", "Solitary ovule in each locule", "right"))
     lines.append(label_leader(cx + 38, cy + 345, cx + 180, cy + 355, "Bract", "Anterior floral position", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> (4) valvate &bull; <tspan fill="#f43f5e" font-weight="700">C:</tspan> (4) twisted contorted &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> 4 epipetalous &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior 2-locular 1-ovule'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> (4) valvate &#8226; <tspan fill="#f43f5e" font-weight="700">C:</tspan> (4) twisted contorted &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> 4 epipetalous &#8226; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior 2-locular 1-ovule'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -852,7 +852,7 @@ def create_periwinkle_svg():
     lines.append(label_leader(cx - 26, cy + 5, cx - 290, cy + 180, "Marginal Placentation", "Multiple ovules in each free carpel", "right"))
     lines.append(label_leader(cx + 38, cy + 345, cx + 180, cy + 355, "Bract", "Anterior floral position", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> 5 valvate &bull; <tspan fill="#f43f5e" font-weight="700">C:</tspan> (5) twisted contorted &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> 5 epipetalous included &bull; <tspan fill="#84cc16" font-weight="700">Disc:</tspan> 2 glands &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) free ovaries'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> 5 valvate &#8226; <tspan fill="#f43f5e" font-weight="700">C:</tspan> (5) twisted contorted &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> 5 epipetalous included &#8226; <tspan fill="#84cc16" font-weight="700">Disc:</tspan> 2 glands &#8226; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) free ovaries'))
     lines.append('</svg>')
     return "\n".join(lines)
 
@@ -937,7 +937,7 @@ def create_tridax_svg():
     lines.append(label_leader(cx, cy + 20, cx - 290, cy + 200, "Basal Placentation", "Single erect anatropous ovule", "right"))
     lines.append(label_leader(cx + 42, cy + 345, cx + 180, cy + 355, "Palea / Chaffy Bract", "Receptacular bract subtending floret", "left"))
 
-    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> feathery pappus &bull; <tspan fill="#fde047" font-weight="700">C:</tspan> (5) tubular valvate &bull; <tspan fill="#eab308" font-weight="700">A:</tspan> (5) syngenesious &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior single basal ovule'))
+    lines.append(draw_summary_card(cx, 840, '<tspan fill="#4ade80" font-weight="700">K:</tspan> feathery pappus &#8226; <tspan fill="#fde047" font-weight="700">C:</tspan> (5) tubular valvate &#8226; <tspan fill="#eab308" font-weight="700">A:</tspan> (5) syngenesious &#8226; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior single basal ovule'))
     lines.append('</svg>')
     return "\n".join(lines)
 

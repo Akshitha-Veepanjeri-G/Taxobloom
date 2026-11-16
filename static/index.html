@@ -1129,8 +1129,12 @@
                 if (!diagramSrc || !diagramSrc.toLowerCase().endsWith(".svg") || diagramSrc.includes("Screenshot") || diagramSrc.includes(".png") || diagramSrc.includes(".jpg") || diagramSrc.includes(".jpeg")) {
                     diagramSrc = `/static/diagrams/${flowerKey}_floral_diagram.svg`;
                 }
-                // Cache-busting query to ensure the browser instantly loads the fresh botanical SVG
                 const diagramImgEl = document.getElementById("diagramImg");
+                diagramImgEl.onerror = () => {
+                    if (diagramImgEl.src.includes("?")) {
+                        diagramImgEl.src = diagramSrc;
+                    }
+                };
                 diagramImgEl.src = `${diagramSrc}?t=${Date.now()}`;
             }
 

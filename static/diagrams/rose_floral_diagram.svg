@@ -162,7 +162,7 @@
 
     <g transform="translate(450, 840)" text-anchor="middle">
       <rect x="-380" y="-18" width="760" height="42" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-      <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#22c55e" font-weight="700">K:</tspan> 5 quincuncial &bull; <tspan fill="#f43f5e" font-weight="700">C:</tspan> 5(&#8734;) polypetalous &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> &#8734; polyandrous dithecous &bull; <tspan fill="#f59e0b" font-weight="700">G:</tspan> &#8734; apocarpous in hypanthium</text>
+      <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#22c55e" font-weight="700">K:</tspan> 5 quincuncial &#8226; <tspan fill="#f43f5e" font-weight="700">C:</tspan> 5(&#8734;) polypetalous &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> &#8734; polyandrous dithecous &#8226; <tspan fill="#f59e0b" font-weight="700">G:</tspan> &#8734; apocarpous in hypanthium</text>
     </g>
     
 </svg>

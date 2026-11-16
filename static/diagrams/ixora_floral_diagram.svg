@@ -96,7 +96,7 @@
 
     <g transform="translate(450, 840)" text-anchor="middle">
       <rect x="-380" y="-18" width="760" height="42" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-      <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#4ade80" font-weight="700">K:</tspan> (4) valvate &bull; <tspan fill="#f43f5e" font-weight="700">C:</tspan> (4) twisted contorted &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> 4 epipetalous &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior 2-locular 1-ovule</text>
+      <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#4ade80" font-weight="700">K:</tspan> (4) valvate &#8226; <tspan fill="#f43f5e" font-weight="700">C:</tspan> (4) twisted contorted &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> 4 epipetalous &#8226; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior 2-locular 1-ovule</text>
     </g>
     
 </svg>

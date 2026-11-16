@@ -27,7 +27,7 @@ def create_hibiscus_svg():
     # Header Section
     lines.append('<g transform="translate(450, 60)" text-anchor="middle">')
     lines.append('  <text y="0" font-size="22" font-weight="800" fill="#fde047" letter-spacing="1.5">BOTANICAL FLORAL DIAGRAM: HIBISCUS</text>')
-    lines.append('  <text y="24" font-size="14" font-style="italic" fill="#cbd5e1">Hibiscus rosa-sinensis L. &bull; Family: Malvaceae</text>')
+    lines.append('  <text y="24" font-size="14" font-style="italic" fill="#cbd5e1">Hibiscus rosa-sinensis L. &#8226; Family: Malvaceae</text>')
     lines.append('  <text y="45" font-size="13" font-weight="600" fill="#c084fc" font-family="monospace">Floral Formula: &#8853; &#9909; Epk&#8325;&#779;&#8328; K&#8333;&#8325;&#8334; C&#8325; A&#8333;&#8734;&#8334; G&#8333;&#8325;&#8334;</text>')
     lines.append('</g>')
     
@@ -274,7 +274,7 @@ def create_hibiscus_svg():
     # Bottom Legend / Summary Card
     lines.append('<g transform="translate(450, 840)" text-anchor="middle">')
     lines.append('  <rect x="-380" y="-18" width="760" height="42" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>')
-    lines.append('  <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#4ade80" font-weight="700">Epk:</tspan> 5-8 free &bull; <tspan fill="#22c55e" font-weight="700">K:</tspan> (5) fused valvate &bull; <tspan fill="#f43f5e" font-weight="700">C:</tspan> 5 contorted &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> (&#8734;) monadelphous &bull; <tspan fill="#f59e0b" font-weight="700">G:</tspan> (5) superior 5-locular</text>')
+    lines.append('  <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#4ade80" font-weight="700">Epk:</tspan> 5-8 free &#8226; <tspan fill="#22c55e" font-weight="700">K:</tspan> (5) fused valvate &#8226; <tspan fill="#f43f5e" font-weight="700">C:</tspan> 5 contorted &#8226; <tspan fill="#fde047" font-weight="700">A:</tspan> (&#8734;) monadelphous &#8226; <tspan fill="#f59e0b" font-weight="700">G:</tspan> (5) superior 5-locular</text>')
     lines.append('</g>')
 
     lines.append('</svg>')
