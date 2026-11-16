@@ -252,18 +252,15 @@ def fetch_taxonomy(name):
 
         if row:
             res = dict(row)
-            # Ensure floral_diagram always uses authentic verified diagram SVG and not a formula screenshot
-            diagram_val = res.get("floral_diagram")
-            if not diagram_val or "Screenshot" in str(diagram_val) or str(diagram_val).endswith(".png"):
-                res["floral_diagram"] = fallback.get("floral_diagram")
-            else:
-                converted = convert_image_path(diagram_val)
-                res["floral_diagram"] = converted if converted else fallback.get("floral_diagram")
+            # CRITICAL FIX: ALWAYS use authentic verified botanical SVG diagram (never raster images/screenshots from DB)
+            res["floral_diagram"] = fallback.get("floral_diagram")
 
-            # If DB stored a screenshot for formula, prefer the clean unicode formula text from fallback
-            formula_val = res.get("floral_formula")
-            if not formula_val or "Screenshot" in str(formula_val) or str(formula_val).endswith((".png", ".jpg")):
+            # CRITICAL FIX: ALWAYS use clean botanical unicode formula text (never image files/screenshots from DB)
+            db_formula = str(res.get("floral_formula") or "").strip()
+            if not db_formula or any(ext in db_formula.lower() for ext in [".png", ".jpg", ".jpeg", ".bmp", ".webp", "screenshot", "/static"]):
                 res["floral_formula"] = fallback.get("floral_formula")
+            else:
+                res["floral_formula"] = db_formula
 
             return res
     except Exception:

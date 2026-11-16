@@ -641,8 +641,6 @@
                             <div id="formulaText"
                                 class="p-4 bg-gray-950/80 rounded-2xl border border-purple-500/30 text-center font-mono-code text-amber-300 text-sm hidden shadow-inner tracking-wider">
                             </div>
-                            <img id="formulaImg"
-                                class="rounded-2xl border border-gray-700/80 w-full object-contain max-h-52 hidden shadow-md bg-gray-950" />
 
                             <!-- Interactive Symbol Breakdown Chips -->
                             <div id="formulaGuideBox" class="mt-3 hidden">
@@ -1095,25 +1093,45 @@
                 }
 
                 // Floral Formula
-                const formulaVal = data.details.floral_formula || "";
+                const fallbackFormulas = {
+                    "calotropis": "⊕ ⚥ K₅ C₍₅₎ A₅ G₍₂₎",
+                    "clitoria": "% ⚥ K₍₅₎ C₁₊₂₊₍₂₎ A₍₉₎₊₁ G₁",
+                    "crinum": "⊕ ⚥ P₍₃₊₃₎ A₃₊₃ G₍₃₎",
+                    "hibiscus": "⊕ ⚥ Epk₅₋₈ K₍₅₎ C₅ A₍∞₎ G₍₅₎",
+                    "ixora": "⊕ ⚥ K₍₄₎ C₍₄₎ A₄ G₍₂₎",
+                    "lotus": "⊕ ⚥ K₂₋₄ C∞ A∞ G_∞",
+                    "sunflower": "Ray: % ♀ K_pappus C₍₅₎ A₀ G₍₂₎ | Disc: ⊕ ⚥ K_pappus C₍₅₎ A₍₅₎ G₍₂₎",
+                    "tridax": "⊕ ⚥ K_pappus C₍₅₎ A₍₅₎ G₍₂₎",
+                    "periwinkle": "⊕ ⚥ K₅ C₍₅₎ A₅ G₍₂₎",
+                    "rose": "⊕ ⚥ K₅ C₅ A∞ G∞"
+                };
+
+                const flowerKey = (data.predicted_label || "").toLowerCase().trim();
+                let formulaVal = (data.details && data.details.floral_formula) ? String(data.details.floral_formula).trim() : "";
                 const formulaImg = document.getElementById("formulaImg");
                 const formulaText = document.getElementById("formulaText");
 
-                if (formulaVal.startsWith("/") || formulaVal.startsWith("http")) {
-                    formulaImg.src = formulaVal;
-                    formulaImg.classList.remove("hidden");
-                    formulaText.classList.add("hidden");
-                    renderFormulaBreakdown("");
-                } else if (formulaVal) {
-                    formulaText.textContent = formulaVal;
-                    formulaText.classList.remove("hidden");
-                    formulaImg.classList.add("hidden");
-                    renderFormulaBreakdown(formulaVal);
+                // Never display raster images or screenshots for floral formula
+                if (!formulaVal || formulaVal.includes(".png") || formulaVal.includes(".jpg") || formulaVal.includes(".jpeg") || formulaVal.includes("Screenshot") || formulaVal.startsWith("/")) {
+                    formulaVal = fallbackFormulas[flowerKey] || formulaVal || "⊕ ⚥ K₍₅₎ C₅ A₍∞₎ G₍₅₎";
                 }
 
-                // Floral Diagram
-                const diagramSrc = data.details.floral_diagram || "";
-                document.getElementById("diagramImg").src = diagramSrc;
+                if (formulaImg) {
+                    formulaImg.src = "";
+                    formulaImg.classList.add("hidden");
+                }
+                formulaText.textContent = formulaVal;
+                formulaText.classList.remove("hidden");
+                renderFormulaBreakdown(formulaVal);
+
+                // Floral Diagram: STRICTLY enforce verified botanical SVG diagram (never raster images)
+                let diagramSrc = (data.details && data.details.floral_diagram) ? String(data.details.floral_diagram).trim() : "";
+                if (!diagramSrc || !diagramSrc.toLowerCase().endsWith(".svg") || diagramSrc.includes("Screenshot") || diagramSrc.includes(".png") || diagramSrc.includes(".jpg") || diagramSrc.includes(".jpeg")) {
+                    diagramSrc = `/static/diagrams/${flowerKey}_floral_diagram.svg`;
+                }
+                // Cache-busting query to ensure the browser instantly loads the fresh botanical SVG
+                const diagramImgEl = document.getElementById("diagramImg");
+                diagramImgEl.src = `${diagramSrc}?t=${Date.now()}`;
             }
 
             // Description
