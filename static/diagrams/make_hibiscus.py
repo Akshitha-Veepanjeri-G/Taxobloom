@@ -285,3 +285,4 @@ dst_path = os.path.join("static", "diagrams", "hibiscus_floral_diagram.svg")
 with open(dst_path, "w", encoding="utf-8") as f:
     f.write(svg_content)
 print(f"Generated {dst_path} ({len(svg_content)} bytes)")
+
