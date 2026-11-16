@@ -328,6 +328,14 @@ def predict_page():
     response.headers["Expires"] = "0"
     return response
 
+# ✅ BOTANICAL CLASSES API
+@app.route("/classes", methods=["GET"])
+def get_classes():
+    return jsonify({
+        "total": len(CLASS_NAMES),
+        "classes": CLASS_NAMES
+    })
+
 # ✅ ML API
 @app.route("/predict", methods=["POST"])
 def predict():
