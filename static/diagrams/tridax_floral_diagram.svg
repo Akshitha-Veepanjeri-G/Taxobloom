@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 920" width="900" height="920" style="background: radial-gradient(circle at 50% 40%, #111d38 0%, #0a1124 60%, #060914 100%); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#eab308"/></linearGradient>
+    <linearGradient id="sepalGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ade80"/><stop offset="70%" stop-color="#16a34a"/><stop offset="100%" stop-color="#14532d"/></linearGradient>
+    <linearGradient id="antherGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#ca8a04"/></linearGradient>
+    <linearGradient id="ovaryGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef9c3"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+  </defs>
+  <!-- Frame -->
+  <rect x="15" y="15" width="870" height="890" rx="28" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <rect x="25" y="25" width="850" height="870" rx="22" fill="none" stroke="rgba(253,224,71,0.15)" stroke-width="1" stroke-dasharray="6 6"/>
+  <!-- Header -->
+  <g transform="translate(450.0, 60)" text-anchor="middle">
+    <text y="0" font-size="22" font-weight="800" fill="#fde047" letter-spacing="1.5">BOTANICAL FLORAL DIAGRAM: TRIDAX</text>
+    <text y="24" font-size="14" font-style="italic" fill="#cbd5e1">Tridax procumbens L. • Family: Asteraceae</text>
+    <text y="45" font-size="13" font-weight="600" fill="#c084fc" font-family="monospace">Floral Formula: Disc: &#8853; &#9909; K_pappus C&#8333;&#8325;&#8334; A&#8333;&#8325;&#8334; G&#8333;&#8322;&#8334; (Inferior)</text>
+  </g>
+
+    <defs>
+      <linearGradient id="tridaxPetal" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="60%" stop-color="#facc15"/><stop offset="100%" stop-color="#ca8a04"/></linearGradient>
+    </defs>
+    
+<circle cx="450" cy="490" r="250" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="190" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="125" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="160" r="14" fill="#0f172a" stroke="#fde047" stroke-width="2.5"/>
+<circle cx="450" cy="160" r="5" fill="#fde047"/>
+<line x1="440" y1="160" x2="460" y2="160" stroke="#fde047" stroke-width="1.5"/>
+<line x1="450" y1="150" x2="450" y2="170" stroke="#fde047" stroke-width="1.5"/>
+<path d="M 408.0 835 Q 450 818.0 492.0 835 Q 450 852.0 408.0 835 Z" fill="#a16207" stroke="#eab308" stroke-width="1.8"/><line x1="450" y1="818.0" x2="450" y2="852.0" stroke="#14532d" stroke-width="1.2"/>
+<line x1="685.0" y1="490.0" x2="715.0" y2="490.0" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="715.0" y1="486.0" x2="715.0" y2="494.0" stroke="#86efac" stroke-width="1"/>
+<line x1="670.8" y1="570.4" x2="699.0" y2="580.6" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="700.4" y1="576.9" x2="697.7" y2="584.4" stroke="#86efac" stroke-width="1"/>
+<line x1="630.0" y1="641.1" x2="653.0" y2="660.3" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="655.6" y1="657.3" x2="650.4" y2="663.4" stroke="#86efac" stroke-width="1"/>
+<line x1="567.5" y1="693.5" x2="582.5" y2="719.5" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="586.0" y1="717.5" x2="579.0" y2="721.5" stroke="#86efac" stroke-width="1"/>
+<line x1="490.8" y1="721.4" x2="496.0" y2="751.0" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="500.0" y1="750.3" x2="492.1" y2="751.7" stroke="#86efac" stroke-width="1"/>
+<line x1="409.2" y1="721.4" x2="404.0" y2="751.0" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="407.9" y1="751.7" x2="400.0" y2="750.3" stroke="#86efac" stroke-width="1"/>
+<line x1="332.5" y1="693.5" x2="317.5" y2="719.5" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="321.0" y1="721.5" x2="314.0" y2="717.5" stroke="#86efac" stroke-width="1"/>
+<line x1="270.0" y1="641.1" x2="247.0" y2="660.3" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="249.6" y1="663.4" x2="244.4" y2="657.3" stroke="#86efac" stroke-width="1"/>
+<line x1="229.2" y1="570.4" x2="201.0" y2="580.6" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="202.3" y1="584.4" x2="199.6" y2="576.9" stroke="#86efac" stroke-width="1"/>
+<line x1="215.0" y1="490.0" x2="185.0" y2="490.0" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="185.0" y1="494.0" x2="185.0" y2="486.0" stroke="#86efac" stroke-width="1"/>
+<line x1="229.2" y1="409.6" x2="201.0" y2="399.4" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="199.6" y1="403.1" x2="202.3" y2="395.6" stroke="#86efac" stroke-width="1"/>
+<line x1="270.0" y1="338.9" x2="247.0" y2="319.7" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="244.4" y1="322.7" x2="249.6" y2="316.6" stroke="#86efac" stroke-width="1"/>
+<line x1="332.5" y1="286.5" x2="317.5" y2="260.5" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="314.0" y1="262.5" x2="321.0" y2="258.5" stroke="#86efac" stroke-width="1"/>
+<line x1="409.2" y1="258.6" x2="404.0" y2="229.0" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="400.0" y1="229.7" x2="407.9" y2="228.3" stroke="#86efac" stroke-width="1"/>
+<line x1="490.8" y1="258.6" x2="496.0" y2="229.0" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="492.1" y1="228.3" x2="500.0" y2="229.7" stroke="#86efac" stroke-width="1"/>
+<line x1="567.5" y1="286.5" x2="582.5" y2="260.5" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="579.0" y1="258.5" x2="586.0" y2="262.5" stroke="#86efac" stroke-width="1"/>
+<line x1="630.0" y1="338.9" x2="653.0" y2="319.7" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="650.4" y1="316.6" x2="655.6" y2="322.7" stroke="#86efac" stroke-width="1"/>
+<line x1="670.8" y1="409.6" x2="699.0" y2="399.4" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+<line x1="697.7" y1="395.6" x2="700.4" y2="403.1" stroke="#86efac" stroke-width="1"/>
+<path d="M 355.0 325.5 Q 450.0 284.0 545.0 325.5 Q 450.0 310.0 355.0 325.5 Z" fill="url(#tridaxPetal)" stroke="#fde047" stroke-width="2"/>
+<path d="M 577.1 348.8 Q 645.9 426.3 635.8 529.5 Q 621.2 434.4 577.1 348.8 Z" fill="url(#tridaxPetal)" stroke="#fde047" stroke-width="2"/>
+<path d="M 623.6 567.3 Q 571.1 656.7 469.9 679.0 Q 555.8 635.6 623.6 567.3 Z" fill="url(#tridaxPetal)" stroke="#fde047" stroke-width="2"/>
+<path d="M 430.1 679.0 Q 328.9 656.7 276.4 567.3 Q 344.2 635.6 430.1 679.0 Z" fill="url(#tridaxPetal)" stroke="#fde047" stroke-width="2"/>
+<path d="M 264.2 529.5 Q 254.1 426.3 322.9 348.8 Q 278.8 434.4 264.2 529.5 Z" fill="url(#tridaxPetal)" stroke="#fde047" stroke-width="2"/>
+<path d="M 545.0 325.5 Q 566.7 340.5 577.1 348.8" fill="none" stroke="#eab308" stroke-width="2.2"/>
+<path d="M 635.8 529.5 Q 636.0 553.9 623.6 567.3" fill="none" stroke="#eab308" stroke-width="2.2"/>
+<path d="M 469.9 679.0 Q 454.5 685.7 430.1 679.0" fill="none" stroke="#eab308" stroke-width="2.2"/>
+<path d="M 276.4 567.3 Q 273.0 553.9 264.2 529.5" fill="none" stroke="#eab308" stroke-width="2.2"/>
+<path d="M 322.9 348.8 Q 342.3 340.5 355.0 325.5" fill="none" stroke="#eab308" stroke-width="2.2"/>
+<circle cx="450" cy="490" r="125" fill="none" stroke="#fde047" stroke-width="3.5"/>
+<line x1="450.0" y1="365.0" x2="450.0" y2="310.0" stroke="#eab308" stroke-width="1.8" stroke-dasharray="3 2"/>
+<circle cx="450.0" cy="365.0" r="5.2" fill="url(#antherGrad)" stroke="#ca8a04" stroke-width="1.2"/>
+<line x1="568.9" y1="451.4" x2="621.2" y2="434.4" stroke="#eab308" stroke-width="1.8" stroke-dasharray="3 2"/>
+<circle cx="568.9" cy="451.4" r="5.2" fill="url(#antherGrad)" stroke="#ca8a04" stroke-width="1.2"/>
+<line x1="523.5" y1="591.1" x2="555.8" y2="635.6" stroke="#eab308" stroke-width="1.8" stroke-dasharray="3 2"/>
+<circle cx="523.5" cy="591.1" r="5.2" fill="url(#antherGrad)" stroke="#ca8a04" stroke-width="1.2"/>
+<line x1="376.5" y1="591.1" x2="344.2" y2="635.6" stroke="#eab308" stroke-width="1.8" stroke-dasharray="3 2"/>
+<circle cx="376.5" cy="591.1" r="5.2" fill="url(#antherGrad)" stroke="#ca8a04" stroke-width="1.2"/>
+<line x1="331.1" y1="451.4" x2="278.8" y2="434.4" stroke="#eab308" stroke-width="1.8" stroke-dasharray="3 2"/>
+<circle cx="331.1" cy="451.4" r="5.2" fill="url(#antherGrad)" stroke="#ca8a04" stroke-width="1.2"/>
+<circle cx="450" cy="490" r="60" fill="#090d16" stroke="#22c55e" stroke-width="3"/>
+<line x1="450" y1="434" x2="450" y2="546" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 3"/>
+<ellipse cx="450" cy="505" rx="14" ry="20" fill="url(#ovaryGrad)" stroke="#d97706" stroke-width="1.5"/>
+<circle cx="450" cy="505" r="4" fill="#d97706"/>
+<line x1="450" y1="525" x2="450" y2="546" stroke="#22c55e" stroke-width="2"/>
+<polyline points="464.0,160.0 570.0,160.0 610.0,160.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="464.0" cy="160.0" r="3.5" fill="#fde047"/>
+<text x="615.0" y="156.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Mother Axis</text>
+<text x="615.0" y="171.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Posterior position indicator</text>
+<polyline points="700.0,490.0 740.0,390.0 780.0,390.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="700.0" cy="490.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="386.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Feathery Pappus (K)</text>
+<text x="785.0" y="401.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Hair-like modified sepals for anemochory</text>
+<polyline points="640.0,550.0 740.0,530.0 780.0,530.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="640.0" cy="550.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="526.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Tubular Corolla: C(5)</text>
+<text x="785.0" y="541.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">5 fused yellow petals, valvate</text>
+<polyline points="575.0,600.0 740.0,650.0 780.0,650.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="575.0" cy="600.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="646.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Syngenesious Stamens: A(5)</text>
+<text x="785.0" y="661.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Anthers united into cylinder around style</text>
+<polyline points="325.0,490.0 160.0,450.0 120.0,450.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="325.0" cy="490.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="446.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Epipetalous Filaments</text>
+<text x="115.0" y="461.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">Attached to corolla tube</text>
+<polyline points="390.0,500.0 160.0,570.0 120.0,570.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="390.0" cy="500.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="566.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Bicarpellary Ovary: G(2)</text>
+<text x="115.0" y="581.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">Syncarpous unilocular inferior ovary</text>
+<polyline points="450.0,510.0 160.0,690.0 120.0,690.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="450.0" cy="510.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="686.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Basal Placentation</text>
+<text x="115.0" y="701.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">Single erect anatropous ovule</text>
+<polyline points="492.0,835.0 630.0,845.0 670.0,845.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="492.0" cy="835.0" r="3.5" fill="#fde047"/>
+<text x="675.0" y="841.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Palea / Chaffy Bract</text>
+<text x="675.0" y="856.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Receptacular bract subtending floret</text>
+
+    <g transform="translate(450, 840)" text-anchor="middle">
+      <rect x="-380" y="-18" width="760" height="42" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#4ade80" font-weight="700">K:</tspan> feathery pappus &bull; <tspan fill="#fde047" font-weight="700">C:</tspan> (5) tubular valvate &bull; <tspan fill="#eab308" font-weight="700">A:</tspan> (5) syngenesious &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) inferior single basal ovule</text>
+    </g>
+    
+</svg>

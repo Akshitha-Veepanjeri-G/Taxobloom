@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 920" width="900" height="920" style="background: radial-gradient(circle at 50% 40%, #111d38 0%, #0a1124 60%, #060914 100%); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#eab308"/></linearGradient>
+    <linearGradient id="sepalGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ade80"/><stop offset="70%" stop-color="#16a34a"/><stop offset="100%" stop-color="#14532d"/></linearGradient>
+    <linearGradient id="antherGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#ca8a04"/></linearGradient>
+    <linearGradient id="ovaryGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef9c3"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+  </defs>
+  <!-- Frame -->
+  <rect x="15" y="15" width="870" height="890" rx="28" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <rect x="25" y="25" width="850" height="870" rx="22" fill="none" stroke="rgba(253,224,71,0.15)" stroke-width="1" stroke-dasharray="6 6"/>
+  <!-- Header -->
+  <g transform="translate(450.0, 60)" text-anchor="middle">
+    <text y="0" font-size="22" font-weight="800" fill="#fde047" letter-spacing="1.5">BOTANICAL FLORAL DIAGRAM: PERIWINKLE</text>
+    <text y="24" font-size="14" font-style="italic" fill="#cbd5e1">Catharanthus roseus (L.) G.Don • Family: Apocynaceae</text>
+    <text y="45" font-size="13" font-weight="600" fill="#c084fc" font-family="monospace">Floral Formula: &#8853; &#9909; K&#8325; C&#8333;&#8325;&#8334; A&#8325; G&#8333;&#8322;&#8334; (Salverform)</text>
+  </g>
+
+    <defs>
+      <linearGradient id="vincaPetal" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fbcfe8"/><stop offset="50%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#be185d"/></linearGradient>
+    </defs>
+    
+<circle cx="450" cy="490" r="250" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="190" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="120" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="160" r="14" fill="#0f172a" stroke="#fde047" stroke-width="2.5"/>
+<circle cx="450" cy="160" r="5" fill="#fde047"/>
+<line x1="440" y1="160" x2="460" y2="160" stroke="#fde047" stroke-width="1.5"/>
+<line x1="450" y1="150" x2="450" y2="170" stroke="#fde047" stroke-width="1.5"/>
+<path d="M 412.0 835 Q 450 819.0 488.0 835 Q 450 851.0 412.0 835 Z" fill="url(#sepalGrad)" stroke="#16a34a" stroke-width="1.8"/><line x1="450" y1="819.0" x2="450" y2="851.0" stroke="#14532d" stroke-width="1.2"/>
+<path d="M 328.8 271.3 Q 450.0 224.0 571.2 271.3 Q 450.0 250.0 328.8 271.3 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 620.5 307.2 Q 703.0 407.8 695.4 537.7 Q 678.3 415.8 620.5 307.2 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 676.6 595.7 Q 606.4 705.2 480.5 738.1 Q 591.1 684.2 676.6 595.7 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 419.5 738.1 Q 293.6 705.2 223.4 595.7 Q 308.9 684.2 419.5 738.1 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 204.6 537.7 Q 197.0 407.8 279.5 307.2 Q 221.7 415.8 204.6 537.7 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 443.8 312.1 Q 566.4 329.8 646.1 433.8 Q 552.3 349.2 443.8 312.1 Z" fill="url(#vincaPetal)" stroke="#fda4af" stroke-width="2"/>
+<path d="M 617.3 429.1 Q 638.3 551.2 564.1 659.1 Q 615.5 543.8 617.3 429.1 Z" fill="url(#vincaPetal)" stroke="#fda4af" stroke-width="2"/>
+<path d="M 559.6 630.3 Q 450.0 688.0 324.4 650.8 Q 450.0 664.0 559.6 630.3 Z" fill="url(#vincaPetal)" stroke="#fda4af" stroke-width="2"/>
+<path d="M 350.5 637.6 Q 261.7 551.2 258.3 420.2 Q 284.5 543.8 350.5 637.6 Z" fill="url(#vincaPetal)" stroke="#fda4af" stroke-width="2"/>
+<path d="M 278.9 440.9 Q 333.6 329.8 457.1 286.1 Q 347.7 349.2 278.9 440.9 Z" fill="url(#vincaPetal)" stroke="#fda4af" stroke-width="2"/>
+<circle cx="450" cy="490" r="115" fill="none" stroke="#fde047" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="450.0" y1="375.0" x2="450.0" y2="315.0" stroke="#fde047" stroke-width="1.8"/>
+<circle cx="450.0" cy="375.0" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<line x1="559.4" y1="454.5" x2="616.4" y2="435.9" stroke="#fde047" stroke-width="1.8"/>
+<circle cx="559.4" cy="454.5" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<line x1="517.6" y1="583.0" x2="552.9" y2="631.6" stroke="#fde047" stroke-width="1.8"/>
+<circle cx="517.6" cy="583.0" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<line x1="382.4" y1="583.0" x2="347.1" y2="631.6" stroke="#fde047" stroke-width="1.8"/>
+<circle cx="382.4" cy="583.0" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<line x1="340.6" y1="454.5" x2="283.6" y2="435.9" stroke="#fde047" stroke-width="1.8"/>
+<circle cx="340.6" cy="454.5" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="428" cy="490" r="17" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+<circle cx="424" cy="485" r="2.8" fill="url(#ovaryGrad)"/>
+<circle cx="424" cy="495" r="2.8" fill="url(#ovaryGrad)"/>
+<circle cx="472" cy="490" r="17" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+<circle cx="468" cy="485" r="2.8" fill="url(#ovaryGrad)"/>
+<circle cx="468" cy="495" r="2.8" fill="url(#ovaryGrad)"/>
+<ellipse cx="450" cy="468" rx="10" ry="6" fill="#84cc16" stroke="#4d7c0f" stroke-width="1.2"/>
+<ellipse cx="450" cy="512" rx="10" ry="6" fill="#84cc16" stroke="#4d7c0f" stroke-width="1.2"/>
+<polyline points="464.0,160.0 570.0,160.0 610.0,160.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="464.0" cy="160.0" r="3.5" fill="#fde047"/>
+<text x="615.0" y="156.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Mother Axis</text>
+<text x="615.0" y="171.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Posterior position indicator</text>
+<polyline points="687.8,412.7 740.0,400.0 780.0,400.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="687.8" cy="412.7" r="3.5" fill="#fde047"/>
+<text x="785.0" y="396.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Calyx: K5</text>
+<text x="785.0" y="411.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">5 sepals, deeply partite</text>
+<polyline points="630.7,548.7 740.0,520.0 780.0,520.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="630.7" cy="548.7" r="3.5" fill="#fde047"/>
+<text x="785.0" y="516.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Corolla: C(5)</text>
+<text x="785.0" y="531.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Salverform, twisted / contorted lobes</text>
+<polyline points="565.0,550.0 740.0,650.0 780.0,650.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="565.0" cy="550.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="646.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Included Stamens (A5)</text>
+<text x="785.0" y="661.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">5 epipetalous enclosed in corolla throat</text>
+<polyline points="450.0,468.0 160.0,430.0 120.0,430.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="450.0" cy="468.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="426.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Disc Nectaries</text>
+<text x="115.0" y="441.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">2 prominent green nectar glands</text>
+<polyline points="428.0,490.0 160.0,550.0 120.0,550.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="428.0" cy="490.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="546.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Bicarpellary Free Ovaries</text>
+<text x="115.0" y="561.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">2 carpels apocarpous at base</text>
+<polyline points="424.0,495.0 160.0,670.0 120.0,670.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="424.0" cy="495.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="666.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Marginal Placentation</text>
+<text x="115.0" y="681.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">Multiple ovules in each free carpel</text>
+<polyline points="488.0,835.0 630.0,845.0 670.0,845.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="488.0" cy="835.0" r="3.5" fill="#fde047"/>
+<text x="675.0" y="841.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Bract</text>
+<text x="675.0" y="856.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Anterior floral position</text>
+
+    <g transform="translate(450, 840)" text-anchor="middle">
+      <rect x="-380" y="-18" width="760" height="42" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#4ade80" font-weight="700">K:</tspan> 5 valvate &bull; <tspan fill="#f43f5e" font-weight="700">C:</tspan> (5) twisted contorted &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> 5 epipetalous included &bull; <tspan fill="#84cc16" font-weight="700">Disc:</tspan> 2 glands &bull; <tspan fill="#22c55e" font-weight="700">G:</tspan> (2) free ovaries</text>
+    </g>
+    
+</svg>

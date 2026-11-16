@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxoBloom — Botanical Intelligence Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/static/logo.svg">
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at 50% 15%, #111d38 0%, #0a1124 55%, #060a17 100%);
+            min-height: 100vh;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* Dark mode toggle */
+        .dark {
+            background: radial-gradient(circle at 50% 15%, #0d1428 0%, #05070f 60%, #020409 100%);
+        }
+
+        /* Luxury Glassmorphism card */
+        .blur-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-top: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.75), 0 0 50px -10px rgba(168, 85, 247, 0.15);
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(236, 72, 153, 0.08) 50%, transparent 70%);
+            filter: blur(75px);
+            pointer-events: none;
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.18);
+                opacity: 0.95;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 🌸 Floating Background Petals Canvas */
+        #petalCanvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 💫 Animated Shimmer Button */
+        .shine-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg,
+                    transparent 35%,
+                    rgba(255, 255, 255, 0.35) 50%,
+                    transparent 65%);
+            transform: rotate(25deg) translateX(-120%);
+            animation: shineSweep 4.5s ease-in-out infinite;
+        }
+
+        @keyframes shineSweep {
+            0%, 55% {
+                transform: rotate(25deg) translateX(-120%);
+            }
+            100% {
+                transform: rotate(25deg) translateX(120%);
+            }
+        }
+
+        /* 🌀 Rotating Orbital Dashed Ring */
+        .orbit-ring {
+            position: absolute;
+            inset: -7px;
+            border-radius: 9999px;
+            border: 1.5px dashed rgba(253, 224, 71, 0.45);
+            animation: spinSlow 16s linear infinite;
+        }
+
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 🌺 Infinite Marquee Carousel */
+        .marquee-container {
+            overflow: hidden;
+            user-select: none;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            animation: scrollMarquee 32s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollMarquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Subtle floating animation for hero emblems */
+        .float-gentle {
+            animation: floatUpDown 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatUpDown {
+            0% {
+                transform: translateY(0px);
+            }
+
+            100% {
+                transform: translateY(-8px);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="text-white flex flex-col min-h-screen relative overflow-x-hidden selection:bg-purple-500 selection:text-white">
+
+    <!-- 🌸 Floating Botanical Blossom Particles Canvas -->
+    <canvas id="petalCanvas"></canvas>
+
+    <!-- Ambient Glowing Radial Spheres -->
+    <div class="ambient-glow top-20 left-1/2 -translate-x-1/2"></div>
+    <div class="ambient-glow bottom-10 right-10 opacity-40"></div>
+
+    <!-- ✅ AUTH CHECK -->
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "/";
+        }
+    </script>
+
+    <!-- 🌙 NAVIGATION BAR -->
+    <nav
+        class="flex justify-between items-center px-6 sm:px-10 py-4 relative z-10 border-b border-white/5 backdrop-blur-md">
+
+        <!-- Brand Emblem & System Status -->
+        <div class="flex items-center gap-3">
+            <img src="/static/logo.svg" alt="TaxoBloom Logo" width="36" height="36"
+                style="width: 36px; height: 36px; min-width: 36px; max-width: 36px; max-height: 36px;"
+                class="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.45)] transition hover:scale-110 cursor-pointer" />
+            <div>
+                <h1 class="text-xl font-bold tracking-tight text-white leading-tight">Taxo<span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300">Bloom</span>
+                </h1>
+                <div class="flex items-center gap-1.5 text-[11px] text-gray-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-medium text-emerald-400/90">System Online</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Controls -->
+        <div class="flex items-center gap-2 sm:gap-4">
+
+            <!-- Prediction Quick Link -->
+            <a href="/predict-page"
+                class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold text-gray-200 hover:text-white px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-yellow-300/30 transition shadow-sm active:scale-95 group">
+                <span>Identify Flower</span>
+                <svg class="w-3.5 h-3.5 text-yellow-300 transition-transform group-hover:translate-x-1" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+
+            <!-- User Chip -->
+            <div
+                class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs shadow-sm">
+                <div
+                    class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 text-white font-bold flex items-center justify-center text-[10px] shadow">
+                    AD
+                </div>
+                <span class="text-gray-300 font-medium hidden sm:inline">admin</span>
+            </div>
+
+            <!-- 🔤 TEXT SIZE -->
+            <select id="textSize"
+                class="bg-gray-900/60 border border-gray-700/80 rounded-xl px-2.5 py-1.5 text-xs text-gray-200 outline-none focus:border-purple-400 transition cursor-pointer">
+                <option value="xs">Small</option>
+                <option value="md" selected>Medium</option>
+                <option value="lg">Large</option>
+            </select>
+
+            <!-- 🌗 DARK TOGGLE -->
+            <button id="darkToggle" title="Toggle theme"
+                class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold shadow-md shadow-yellow-400/20 active:scale-95 transition">
+                🌙
+            </button>
+
+            <!-- 🚪 LOGOUT -->
+            <button onclick="logout()"
+                class="px-3 sm:px-4 py-1.5 sm:py-2 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 rounded-xl text-xs sm:text-sm font-semibold transition active:scale-95 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+                <span class="hidden sm:inline">Logout</span>
+            </button>
+
+        </div>
+    </nav>
+
+
+    <!-- ================================================================= -->
+    <!-- 🌸 HERO SECTION WITH LIVE ANIMATIONS & CALL TO ACTION              -->
+    <!-- ================================================================= -->
+    <main class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 w-full py-8 sm:py-12 relative z-10 fade-in flex flex-col gap-10">
+
+        <!-- Central Hero Card -->
+        <div class="blur-card p-8 sm:p-12 rounded-3xl w-full text-center relative overflow-hidden shadow-2xl">
+
+            <!-- Floating Orbital Emblem with Custom Vector Logo -->
+            <div class="relative w-24 h-24 mx-auto mb-6 float-gentle flex items-center justify-center" style="width: 96px; height: 96px; max-width: 96px; max-height: 96px;">
+                <div class="orbit-ring"></div>
+                <div
+                    class="w-full h-full rounded-full bg-gradient-to-tr from-purple-600/25 via-fuchsia-500/15 to-pink-500/20 border border-white/20 flex items-center justify-center p-3.5 shadow-2xl backdrop-blur-md"
+                    style="width: 96px; height: 96px;">
+                    <img src="/static/logo.svg" alt="TaxoBloom Emblem" width="64" height="64"
+                        style="width: 64px; height: 64px; max-width: 64px; max-height: 64px;"
+                        class="w-16 h-16 object-contain drop-shadow-[0_0_16px_rgba(236,72,153,0.6)]" />
+                </div>
+            </div>
+
+            <!-- Dynamic Live Greeting Badge -->
+            <div
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-yellow-300 mb-4 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-300 animate-ping"></span>
+                <span id="dynamicGreeting" class="font-medium">Welcome back &bull; AI Botanical System Ready</span>
+            </div>
+
+            <!-- Headline -->
+            <h2
+                class="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-300 to-amber-300 tracking-tight leading-tight mb-4">
+                Botanical Intelligence &amp; Taxonomy Suite
+            </h2>
+
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-light mb-8">
+                Identify flowering plant specimens with ML-assisted visual recognition. Inspect complete Linnaean
+                taxonomic hierarchies, standardized floral formulas, and anatomical diagrams.
+            </p>
+
+            <!-- Actions Row -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-10">
+                <a href="/predict-page"
+                    class="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-sm bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 hover:opacity-95 hover:shadow-xl hover:shadow-purple-500/35 active:scale-[0.98] transition-all duration-200 text-white flex items-center justify-center gap-2.5 shadow-lg shadow-purple-500/20 shine-btn">
+                    <span>Launch Flower Identifier</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- 📊 Live Metrics Grid with Animated Counters (Clean, No Emojis) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 max-w-4xl mx-auto">
+                <div
+                    class="p-4 rounded-2xl bg-gray-900/40 border border-white/5 hover:border-yellow-300/30 transition group text-left shadow-sm">
+                    <span class="text-xs text-gray-400 font-medium block mb-1">Catalog Flora</span>
+                    <div class="text-2xl font-bold text-white tracking-tight flex items-baseline gap-1">
+                        <span class="counter" data-target="10">0</span>
+                        <span class="text-xs text-yellow-300 font-medium">Species</span>
+                    </div>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Verified botanical records</p>
+                </div>
+
+                <div
+                    class="p-4 rounded-2xl bg-gray-900/40 border border-white/5 hover:border-yellow-300/30 transition group text-left shadow-sm">
+                    <span class="text-xs text-gray-400 font-medium block mb-1">Linnaean Ranks</span>
+                    <div class="text-2xl font-bold text-white tracking-tight flex items-baseline gap-1">
+                        <span class="counter" data-target="7">0</span>
+                        <span class="text-xs text-emerald-400 font-medium">Tiers</span>
+                    </div>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Kingdom down to species</p>
+                </div>
+
+                <div
+                    class="p-4 rounded-2xl bg-gray-900/40 border border-white/5 hover:border-yellow-300/30 transition group text-left shadow-sm">
+                    <span class="text-xs text-gray-400 font-medium block mb-1">Floral Anatomy</span>
+                    <div class="text-2xl font-bold text-white tracking-tight flex items-baseline gap-1">
+                        <span class="counter" data-target="100">0</span>
+                        <span class="text-xs text-purple-300 font-medium">%</span>
+                    </div>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Diagrams &amp; formula coverage</p>
+                </div>
+
+                <div
+                    class="p-4 rounded-2xl bg-gray-900/40 border border-white/5 hover:border-yellow-300/30 transition group text-left shadow-sm">
+                    <span class="text-xs text-gray-400 font-medium block mb-1">Inference Speed</span>
+                    <div class="text-2xl font-bold text-white tracking-tight flex items-baseline gap-1">
+                        <span>&lt; 1.2</span>
+                        <span class="text-xs text-amber-300 font-medium">Sec</span>
+                    </div>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Real-time neural inference</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ============================================================= -->
+        <!-- 🌺 LIVE INFINITE MARQUEE: SUPPORTED BOTANICAL CATALOG        -->
+        <!-- ============================================================= -->
+        <div class="fade-in">
+            <div class="flex items-center justify-between mb-3 px-1">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-yellow-300/90">
+                        Supported Flower Species Catalog
+                    </h3>
+                </div>
+                <span class="text-[11px] text-gray-400">Hover any specimen to inspect</span>
+            </div>
+
+            <!-- Marquee Ribbon -->
+            <div class="marquee-container py-2">
+                <div class="marquee-track">
+
+                    <!-- Set 1 of Flower Specimens -->
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌺</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Hibiscus</p>
+                            <p class="text-[10px] text-gray-400 italic">Hibiscus rosa-sinensis</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 ml-1">Malvaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌻</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Sunflower</p>
+                            <p class="text-[10px] text-gray-400 italic">Helianthus annuus</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 ml-1">Asteraceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌹</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Rose</p>
+                            <p class="text-[10px] text-gray-400 italic">Rosa indica</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 ml-1">Rosaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🪷</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Lotus</p>
+                            <p class="text-[10px] text-gray-400 italic">Nelumbo nucifera</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 ml-1">Nelumbonaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌸</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Periwinkle</p>
+                            <p class="text-[10px] text-gray-400 italic">Catharanthus roseus</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 ml-1">Apocynaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🦋</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Clitoria</p>
+                            <p class="text-[10px] text-gray-400 italic">Clitoria ternatea</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 ml-1">Fabaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">💐</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Ixora</p>
+                            <p class="text-[10px] text-gray-400 italic">Ixora coccinea</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 ml-1">Rubiaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌾</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Crinum</p>
+                            <p class="text-[10px] text-gray-400 italic">Crinum asiaticum</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 ml-1">Amaryllidaceae</span>
+                    </a>
+
+                    <!-- Duplicate for infinite seamless marquee loop -->
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌺</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Hibiscus</p>
+                            <p class="text-[10px] text-gray-400 italic">Hibiscus rosa-sinensis</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 ml-1">Malvaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌻</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Sunflower</p>
+                            <p class="text-[10px] text-gray-400 italic">Helianthus annuus</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 ml-1">Asteraceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🌹</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Rose</p>
+                            <p class="text-[10px] text-gray-400 italic">Rosa indica</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 ml-1">Rosaceae</span>
+                    </a>
+
+                    <a href="/predict-page"
+                        class="p-3.5 px-4 rounded-2xl blur-card hover:bg-white/10 hover:border-yellow-300/40 transition flex items-center gap-3 shrink-0 group active:scale-95">
+                        <span class="text-2xl group-hover:scale-125 transition-transform">🪷</span>
+                        <div class="text-left">
+                            <p class="text-xs font-bold text-white group-hover:text-yellow-300 transition">Lotus</p>
+                            <p class="text-[10px] text-gray-400 italic">Nelumbo nucifera</p>
+                        </div>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 ml-1">Nelumbonaceae</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ============================================================= -->
+        <!-- CORE PLATFORM PILLARS                                         -->
+        <!-- ============================================================= -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="blur-card p-6 rounded-3xl hover:border-yellow-300/30 transition group shadow-lg">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-300 mb-4 group-hover:scale-110 transition shadow-inner">
+                    <svg class="w-6 h-6 text-purple-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-bold text-white mb-1.5 group-hover:text-yellow-300 transition">
+                    Visual AI Classification
+                </h4>
+                <p class="text-xs text-gray-300 font-light leading-relaxed">
+                    Evaluates floral morphology, corolla symmetry, whorl arrangements, and petal pigmentation against
+                    botanical datasets.
+                </p>
+            </div>
+
+            <div class="blur-card p-6 rounded-3xl hover:border-yellow-300/30 transition group shadow-lg">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300 mb-4 group-hover:scale-110 transition shadow-inner">
+                    <svg class="w-6 h-6 text-emerald-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-bold text-white mb-1.5 group-hover:text-yellow-300 transition">
+                    Linnaean Taxonomy
+                </h4>
+                <p class="text-xs text-gray-300 font-light leading-relaxed">
+                    Produces structured taxonomic ranks: Kingdom, Division, Class, Order, Family, Genus, and Species
+                    nomenclature.
+                </p>
+            </div>
+
+            <div class="blur-card p-6 rounded-3xl hover:border-yellow-300/30 transition group shadow-lg">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-300 mb-4 group-hover:scale-110 transition shadow-inner">
+                    <svg class="w-6 h-6 text-pink-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.942A4.5 4.5 0 0115.9 16.5H8.1a4.5 4.5 0 01-2.33-.658L4.2 14.9" />
+                    </svg>
+                </div>
+                <h4 class="text-base font-bold text-white mb-1.5 group-hover:text-yellow-300 transition">
+                    Floral Anatomy &amp; Diagrams
+                </h4>
+                <p class="text-xs text-gray-300 font-light leading-relaxed">
+                    Decodes standardized floral shorthand formulas alongside cross-sectional diagrams with interactive
+                    symbol keys.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- REAL WEBSITE CLEAN FOOTER -->
+    <footer
+        class="text-center py-5 text-gray-500 text-xs relative z-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between px-6 sm:px-10 gap-2">
+        <span>© 2026 TaxoBloom Botanical Platform &bull; All rights reserved</span>
+        <div class="flex items-center gap-4 text-gray-400">
+            <a href="/predict-page" class="hover:text-yellow-300 transition">Flower Identifier</a>
+            <span>&bull;</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>Active Release v2.4</span>
+            </span>
+        </div>
+    </footer>
+
+    <!-- ============================================================= -->
+    <!-- 🌿 SCRIPTS: LIVE BLOSSOM PARTICLES, GREETING & ANIMATED COUNTERS -->
+    <!-- ============================================================= -->
+    <script>
+        // 1. Dynamic Greeting Based on User's Local Time
+        const dynamicGreeting = document.getElementById("dynamicGreeting");
+        const currentHour = new Date().getHours();
+        let greetingPrefix = "Good morning";
+        if (currentHour >= 12 && currentHour < 17) {
+            greetingPrefix = "Good afternoon";
+        } else if (currentHour >= 17) {
+            greetingPrefix = "Good evening";
+        }
+        dynamicGreeting.textContent = `${greetingPrefix}, Administrator • AI Botanical System Ready`;
+
+        // 2. Animated Number Counters
+        const counters = document.querySelectorAll(".counter");
+        counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target");
+            let count = 0;
+            const duration = 1200; // ms
+            const stepTime = Math.abs(Math.floor(duration / (target || 1)));
+            const timer = setInterval(() => {
+                count++;
+                counter.textContent = count;
+                if (count >= target) {
+                    counter.textContent = target;
+                    clearInterval(timer);
+                }
+            }, Math.max(stepTime, 20));
+        });
+
+        // 3. 🌸 Floating Botanical Blossom Petals Canvas Animation
+        const canvas = document.getElementById("petalCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener("resize", () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Petal {
+            constructor() {
+                this.reset(true);
+            }
+
+            reset(initial = false) {
+                this.x = Math.random() * width;
+                this.y = initial ? Math.random() * height : -20;
+                this.size = Math.random() * 6 + 4;
+                this.speedY = Math.random() * 0.8 + 0.4;
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = (Math.random() - 0.5) * 0.03;
+                this.opacity = Math.random() * 0.25 + 0.12;
+
+                // Soft pastel botanical palette
+                const colors = [
+                    "rgba(244, 114, 182, ", // soft pink
+                    "rgba(192, 132, 252, ", // purple
+                    "rgba(253, 224, 71, ",  // amber gold
+                    "rgba(52, 211, 153, "   // soft mint
+                ];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.angle) * 0.4;
+                this.angle += this.spin;
+
+                if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
+                    this.reset(false);
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = this.color + this.opacity + ")";
+                
+                // Draw delicate curved botanical petal shape
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(this.size * 0.8, -this.size * 1.2, this.size, 0);
+                ctx.quadraticCurveTo(this.size * 0.8, this.size * 1.2, 0, 0);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const petals = Array.from({ length: 30 }, () => new Petal());
+
+        function animatePetals() {
+            ctx.clearRect(0, 0, width, height);
+            petals.forEach(petal => {
+                petal.update();
+                petal.draw();
+            });
+            requestAnimationFrame(animatePetals);
+        }
+        animatePetals();
+
+        // 4. TEXT SIZE CONTROL
+        const textSize = document.getElementById("textSize");
+        function applyTextSize(size) {
+            if (size === "xs") document.body.style.fontSize = "13px";
+            if (size === "md") document.body.style.fontSize = "16px";
+            if (size === "lg") document.body.style.fontSize = "18px";
+        }
+        textSize.onchange = () => {
+            applyTextSize(textSize.value);
+            localStorage.setItem("textSize", textSize.value);
+        };
+        if (localStorage.getItem("textSize")) {
+            textSize.value = localStorage.getItem("textSize");
+            applyTextSize(textSize.value);
+        }
+
+        // 5. DARK / LIGHT THEME TOGGLE
+        const toggle = document.getElementById("darkToggle");
+        if (localStorage.getItem("darkMode") === "true") {
+            document.body.classList.add("dark");
+            toggle.textContent = "☀️";
+        }
+        toggle.onclick = () => {
+            document.body.classList.toggle("dark");
+            const active = document.body.classList.contains("dark");
+            toggle.textContent = active ? "☀️" : "🌙";
+            localStorage.setItem("darkMode", active);
+        };
+
+        // 6. LOGOUT
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            window.location.href = "/";
+        }
+    </script>
+
+</body>
+
+</html>

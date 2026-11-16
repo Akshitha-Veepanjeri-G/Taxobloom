@@ -1,0 +1,23 @@
+# Virtual Environment
+.venv/
+env/
+venv/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+tempCodeRunnerFile*
+
+# Temporary uploads during model inference
+tmp_uploads/*
+!tmp_uploads/.gitkeep
+
+# Environment variables & secrets (CRITICAL: Never commit credentials)
+.env
+.env.*
+!.env.example
+
+# IDE configurations
+.vscode/
+.idea/

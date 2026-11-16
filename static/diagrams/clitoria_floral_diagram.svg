@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 920" width="900" height="920" style="background: radial-gradient(circle at 50% 40%, #111d38 0%, #0a1124 60%, #060914 100%); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#eab308"/></linearGradient>
+    <linearGradient id="sepalGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ade80"/><stop offset="70%" stop-color="#16a34a"/><stop offset="100%" stop-color="#14532d"/></linearGradient>
+    <linearGradient id="antherGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#ca8a04"/></linearGradient>
+    <linearGradient id="ovaryGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fef9c3"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+  </defs>
+  <!-- Frame -->
+  <rect x="15" y="15" width="870" height="890" rx="28" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <rect x="25" y="25" width="850" height="870" rx="22" fill="none" stroke="rgba(253,224,71,0.15)" stroke-width="1" stroke-dasharray="6 6"/>
+  <!-- Header -->
+  <g transform="translate(450.0, 60)" text-anchor="middle">
+    <text y="0" font-size="22" font-weight="800" fill="#fde047" letter-spacing="1.5">BOTANICAL FLORAL DIAGRAM: CLITORIA</text>
+    <text y="24" font-size="14" font-style="italic" fill="#cbd5e1">Clitoria ternatea L. • Family: Fabaceae</text>
+    <text y="45" font-size="13" font-weight="600" fill="#c084fc" font-family="monospace">Floral Formula: % &#9909; K&#8333;&#8325;&#8334; C&#8321;&#8330;&#8322;&#8330;&#8333;&#8322;&#8334; A&#8333;&#8329;&#8334;&#8330;&#8321; G&#8321;</text>
+  </g>
+
+    <defs>
+      <linearGradient id="vexGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#93c5fd"/><stop offset="50%" stop-color="#2563eb"/><stop offset="100%" stop-color="#1e3a8a"/></linearGradient>
+      <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient>
+      <linearGradient id="keelGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#bfdbfe"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+    </defs>
+    
+<circle cx="450" cy="490" r="260" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="205" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="140" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="490" r="75" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+<circle cx="450" cy="160" r="14" fill="#0f172a" stroke="#fde047" stroke-width="2.5"/>
+<circle cx="450" cy="160" r="5" fill="#fde047"/>
+<line x1="440" y1="160" x2="460" y2="160" stroke="#fde047" stroke-width="1.5"/>
+<line x1="450" y1="150" x2="450" y2="170" stroke="#fde047" stroke-width="1.5"/>
+<path d="M 412.0 835 Q 450 820.0 488.0 835 Q 450 850.0 412.0 835 Z" fill="url(#sepalGrad)" stroke="#16a34a" stroke-width="1.8"/><line x1="450" y1="820.0" x2="450" y2="850.0" stroke="#14532d" stroke-width="1.2"/>
+<path d="M 155 462 Q 140 490 155 518 Q 165 490 155 462 Z" fill="url(#sepalGrad)" stroke="#16a34a" stroke-width="1.5"/>
+<path d="M 745 462 Q 760 490 745 518 Q 735 490 745 462 Z" fill="url(#sepalGrad)" stroke="#16a34a" stroke-width="1.5"/>
+<path d="M 580.0 715.2 Q 450.0 766.0 320.0 715.2 Q 450.0 740.0 580.0 715.2 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 276.0 683.2 Q 187.5 575.3 195.7 435.9 Q 212.2 567.3 276.0 683.2 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 212.5 384.2 Q 287.8 266.7 422.8 231.4 Q 303.1 287.7 212.5 384.2 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 477.2 231.4 Q 612.2 266.7 687.5 384.2 Q 596.9 287.7 477.2 231.4 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 704.3 435.9 Q 712.5 575.3 624.0 683.2 Q 687.8 567.3 704.3 435.9 Z" fill="url(#sepalGrad)" stroke="#14532d" stroke-width="2"/>
+<path d="M 320.0 715.2 Q 301.0 706.2 276.0 683.2" fill="none" stroke="#22c55e" stroke-width="2.2"/>
+<path d="M 195.7 435.9 Q 206.1 414.2 212.5 384.2" fill="none" stroke="#22c55e" stroke-width="2.2"/>
+<path d="M 422.8 231.4 Q 454.5 233.7 477.2 231.4" fill="none" stroke="#22c55e" stroke-width="2.2"/>
+<path d="M 687.5 384.2 Q 702.9 414.2 704.3 435.9" fill="none" stroke="#22c55e" stroke-width="2.2"/>
+<path d="M 624.0 683.2 Q 608.0 706.2 580.0 715.2" fill="none" stroke="#22c55e" stroke-width="2.2"/>
+<path d="M 259.7 401.3 Q 450.0 260.0 640.3 401.3 Q 450.0 296.0 259.7 401.3 Z" fill="url(#vexGrad)" stroke="#93c5fd" stroke-width="2.2"/>
+<path d="M 362.5 641.6 Q 272.4 554.6 285.6 430.1 Q 296.8 545.7 362.5 641.6 Z" fill="url(#wingGrad)" stroke="#60a5fa" stroke-width="1.8"/>
+<path d="M 614.4 430.1 Q 627.6 554.6 537.5 641.6 Q 603.2 545.7 614.4 430.1 Z" fill="url(#wingGrad)" stroke="#60a5fa" stroke-width="1.8"/>
+<path d="M 540.0 597.2 Q 450.0 646.0 360.0 597.2 Q 450.0 620.0 540.0 597.2 Z" fill="url(#keelGrad)" stroke="#bfdbfe" stroke-width="1.8"/>
+<circle cx="450" cy="646" r="4" fill="#60a5fa"/>
+<path d="M 545.0 490.0 A 95 95 0 0 1 355.0 490.0" fill="none" stroke="#fde047" stroke-width="3" stroke-linecap="round"/>
+<circle cx="543.6" cy="506.5" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="532.3" cy="537.5" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="511.1" cy="562.8" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="482.5" cy="579.3" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="450.0" cy="585.0" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="417.5" cy="579.3" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="388.9" cy="562.8" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="367.7" cy="537.5" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="356.4" cy="506.5" r="4.2" fill="url(#antherGrad)" stroke="#854d0e" stroke-width="1"/>
+<circle cx="450" cy="395" r="4.8" fill="url(#antherGrad)" stroke="#fde047" stroke-width="1.5"/>
+<ellipse cx="450" cy="490" rx="36" ry="24" fill="#090d16" stroke="#22c55e" stroke-width="2.5"/>
+<circle cx="432" cy="482" r="3.2" fill="url(#ovaryGrad)" stroke="#ca8a04" stroke-width="0.8"/>
+<line x1="432" y1="482" x2="432" y2="474" stroke="#22c55e" stroke-width="1"/>
+<circle cx="444" cy="482" r="3.2" fill="url(#ovaryGrad)" stroke="#ca8a04" stroke-width="0.8"/>
+<line x1="444" y1="482" x2="444" y2="474" stroke="#22c55e" stroke-width="1"/>
+<circle cx="456" cy="482" r="3.2" fill="url(#ovaryGrad)" stroke="#ca8a04" stroke-width="0.8"/>
+<line x1="456" y1="482" x2="456" y2="474" stroke="#22c55e" stroke-width="1"/>
+<circle cx="468" cy="482" r="3.2" fill="url(#ovaryGrad)" stroke="#ca8a04" stroke-width="0.8"/>
+<line x1="468" y1="482" x2="468" y2="474" stroke="#22c55e" stroke-width="1"/>
+<polyline points="464.0,160.0 570.0,160.0 610.0,160.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="464.0" cy="160.0" r="3.5" fill="#fde047"/>
+<text x="615.0" y="156.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Mother Axis</text>
+<text x="615.0" y="171.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Posterior position indicator</text>
+<polyline points="630.0,290.0 740.0,310.0 780.0,310.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="630.0" cy="290.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="306.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Vexillum / Standard</text>
+<text x="785.0" y="321.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Large posterior petal (outermost)</text>
+<polyline points="625.0,540.0 740.0,510.0 780.0,510.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="625.0" cy="540.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="506.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Wing Petals (Alae)</text>
+<text x="785.0" y="521.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">2 lateral petals overlapping keel</text>
+<polyline points="490.0,645.0 740.0,650.0 780.0,650.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="490.0" cy="645.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="646.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Keel Petals (Carina)</text>
+<text x="785.0" y="661.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">2 anterior petals fused at apex</text>
+<polyline points="710.0,610.0 740.0,740.0 780.0,740.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="710.0" cy="610.0" r="3.5" fill="#fde047"/>
+<text x="785.0" y="736.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Calyx: K(5)</text>
+<text x="785.0" y="751.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">5 fused sepals, odd sepal anterior</text>
+<polyline points="444.0,395.0 160.0,390.0 120.0,390.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="444.0" cy="395.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="386.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Free Posterior Stamen</text>
+<text x="115.0" y="401.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">1 isolated stamen: (+1)</text>
+<polyline points="355.0,530.0 160.0,510.0 120.0,510.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="355.0" cy="530.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="506.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Fused Staminal Tube</text>
+<text x="115.0" y="521.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">9 stamens united: A(9)</text>
+<polyline points="414.0,490.0 160.0,630.0 120.0,630.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="414.0" cy="490.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="626.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Monocarpellary Ovary: G1</text>
+<text x="115.0" y="641.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">Unilocular, marginal placentation</text>
+<polyline points="155.0,480.0 160.0,730.0 120.0,730.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="155.0" cy="480.0" r="3.5" fill="#fde047"/>
+<text x="115.0" y="726.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">Bracteoles</text>
+<text x="115.0" y="741.0" font-size="10.5" fill="#cbd5e1" text-anchor="end">2 prominent lateral bracteoles</text>
+<polyline points="488.0,835.0 630.0,845.0 670.0,845.0" fill="none" stroke="#fde047" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.85"/>
+<circle cx="488.0" cy="835.0" r="3.5" fill="#fde047"/>
+<text x="675.0" y="841.0" font-size="12" font-weight="700" fill="#ffffff" text-anchor="start">Bract</text>
+<text x="675.0" y="856.0" font-size="10.5" fill="#cbd5e1" text-anchor="start">Anterior floral position</text>
+
+    <g transform="translate(450, 840)" text-anchor="middle">
+      <rect x="-380" y="-18" width="760" height="42" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <text y="7" font-size="12" fill="#e2e8f0"><tspan fill="#22c55e" font-weight="700">K:</tspan> (5) valvate odd-anterior &bull; <tspan fill="#60a5fa" font-weight="700">C:</tspan> 1+2+(2) vexillary &bull; <tspan fill="#fde047" font-weight="700">A:</tspan> (9)+1 diadelphous &bull; <tspan fill="#f59e0b" font-weight="700">G:</tspan> 1 marginal</text>
+    </g>
+    
+</svg>

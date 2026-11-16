@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaxoBloom — Botanical Intelligence &amp; Prediction Suite</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/static/logo.svg">
+    <!-- Lightweight Confetti for Botanical Discovery Celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at 50% 12%, #111d38 0%, #0a1124 55%, #050813 100%);
+            min-height: 100vh;
+        }
+
+        .font-mono-code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* 💎 Elite Glassmorphism */
+        .blur-card {
+            background: rgba(255, 255, 255, 0.045);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-top: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 30px 65px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(168, 85, 247, 0.16);
+        }
+
+        .blur-card-subtle {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* 🌸 Floating Blossom Particles Canvas */
+        #petalCanvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(236, 72, 153, 0.09) 50%, transparent 70%);
+            filter: blur(85px);
+            pointer-events: none;
+            animation: pulseGlow 9s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.65;
+            }
+
+            100% {
+                transform: scale(1.18);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 🔬 Active Botanical Laser Scanner */
+        .scanner-laser {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #c084fc 20%, #fde047 50%, #f472b6 80%, transparent 100%);
+            box-shadow: 0 0 18px 5px rgba(192, 132, 252, 0.85), 0 0 32px 10px rgba(253, 224, 71, 0.45);
+            animation: scanSweep 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+            z-index: 25;
+        }
+
+        @keyframes scanSweep {
+            0% {
+                top: 4%;
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 93%;
+                opacity: 0.8;
+            }
+        }
+
+        /* Holographic Grid Sweep Overlay */
+        .hologram-grid {
+            background-size: 24px 24px;
+            background-image: 
+                linear-gradient(to right, rgba(168, 85, 247, 0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(168, 85, 247, 0.12) 1px, transparent 1px);
+        }
+
+        /* Scanner reticle corners */
+        .corner-reticle {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-color: #fde047;
+            z-index: 30;
+            pointer-events: none;
+            filter: drop-shadow(0 0 5px rgba(253, 224, 71, 0.7));
+        }
+
+        /* 💫 Animated Shimmer Button */
+        .shine-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg,
+                    transparent 35%,
+                    rgba(255, 255, 255, 0.35) 50%,
+                    transparent 65%);
+            transform: rotate(25deg) translateX(-120%);
+            animation: shineSweep 4.5s ease-in-out infinite;
+        }
+
+        @keyframes shineSweep {
+            0%, 55% {
+                transform: rotate(25deg) translateX(-120%);
+            }
+            100% {
+                transform: rotate(25deg) translateX(120%);
+            }
+        }
+
+        /* Interactive Dropzone State */
+        .dropzone-active {
+            border-color: #c084fc !important;
+            background-color: rgba(168, 85, 247, 0.14) !important;
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.35) !important;
+            transform: scale(1.015);
+        }
+
+        /* Animated Sound Wave Indicator */
+        .sound-wave-bar {
+            animation: soundWave 1.2s ease-in-out infinite alternate;
+        }
+        @keyframes soundWave {
+            0% { height: 4px; }
+            50% { height: 14px; }
+            100% { height: 6px; }
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            nav,
+            #uploadSection,
+            #reuploadBtn,
+            #printBtn,
+            #copyBtn,
+            #speakBtn,
+            #showImagesPrompt,
+            #petalCanvas,
+            footer {
+                display: none !important;
+            }
+
+            #resultSection {
+                display: block !important;
+                width: 100% !important;
+            }
+
+            .blur-card {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                background: white !important;
+                color: black !important;
+            }
+
+            #resLabel {
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="text-white flex flex-col min-h-screen relative overflow-x-hidden selection:bg-purple-500 selection:text-white">
+
+    <!-- 🌸 Floating Botanical Blossom Particles Canvas -->
+    <canvas id="petalCanvas"></canvas>
+
+    <!-- Ambient Background Glows -->
+    <div class="ambient-glow top-20 left-1/2 -translate-x-1/2"></div>
+    <div class="ambient-glow bottom-10 right-10 opacity-35"></div>
+
+    <!-- ✅ AUTH CHECK -->
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "/";
+        }
+    </script>
+
+    <!-- 🌙 NAVIGATION BAR -->
+    <nav class="flex justify-between items-center px-6 sm:px-10 py-4 relative z-20 border-b border-white/5 backdrop-blur-md">
+        <!-- Brand with New Vector Logo -->
+        <div class="flex items-center gap-3">
+            <a href="/dashboard" class="flex items-center gap-3 group">
+                <img src="/static/logo.svg" alt="TaxoBloom Logo" width="36" height="36"
+                    style="width: 36px; height: 36px; min-width: 36px; max-width: 36px; max-height: 36px;"
+                    class="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.45)] transition hover:scale-110 cursor-pointer" />
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white leading-tight">Taxo<span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300">Bloom</span>
+                    </h1>
+                    <div class="flex items-center gap-1.5 text-[10px] text-gray-400">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="tracking-wide">AI Inference Engine Online</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Navigation Action -->
+        <a href="/dashboard"
+            class="text-yellow-300 hover:text-yellow-200 transition text-xs sm:text-sm font-semibold flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-300/40 shadow-sm active:scale-95 group">
+            <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            <span>Back to Dashboard</span>
+        </a>
+    </nav>
+
+    <!-- 🌼 HEADER BANNER -->
+    <section class="text-center px-4 relative z-10 mt-5 mb-2">
+        <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-yellow-300 mb-3 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="font-medium tracking-wide">Botanical Deep Neural Classification</span>
+        </div>
+        <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-300 to-amber-300">
+            Flower Recognition &amp; Taxonomy Suite
+        </h2>
+        <p class="mt-2 text-gray-300 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">
+            Upload a floral specimen to inspect its Linnaean taxonomy hierarchy, floral formula, diagram, and botanical description.
+        </p>
+    </section>
+
+
+    <!-- ================================================================= -->
+    <!-- 🌸 STAGE 1: LUXURY UPLOAD STUDIO (Clean, Centered, Before Prediction) -->
+    <!-- ================================================================= -->
+    <div id="uploadSection" class="flex-1 flex justify-center items-start px-4 mt-6 fade-in relative z-10 mb-12">
+        <div class="w-full max-w-2xl flex flex-col gap-6">
+
+            <!-- Main Studio Card -->
+            <div id="dropBox" class="blur-card p-6 sm:p-9 rounded-3xl w-full text-center transition-all duration-300 shadow-2xl relative overflow-hidden">
+
+                <!-- Header Row -->
+                <div class="flex items-center justify-between mb-5 pb-4 border-b border-white/5">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-yellow-300 tracking-tight">
+                            Specimen Upload Studio
+                        </h3>
+                    </div>
+                    <span id="filePill"
+                        class="hidden text-[11px] px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 font-medium truncate max-w-[200px]"></span>
+                </div>
+
+                <!-- 📸 Interactive Studio Dropzone Area (Visible when no image is loaded) -->
+                <div id="dropzoneArea" onclick="document.getElementById('fileInput').click()"
+                    class="cursor-pointer p-8 sm:p-10 rounded-2xl border-2 border-dashed border-purple-400/30 hover:border-purple-400/70 bg-gray-900/40 hover:bg-purple-950/20 transition-all duration-300 group relative mb-5 flex flex-col items-center justify-center">
+                    
+                    <!-- Floating Upload Glyph -->
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500/20 to-pink-500/20 border border-white/10 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform duration-300 shadow-inner mb-3">
+                        <svg class="w-8 h-8 text-purple-300 group-hover:text-yellow-300 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                        </svg>
+                    </div>
+
+                    <p class="text-sm sm:text-base font-semibold text-white mb-1 group-hover:text-yellow-200 transition">
+                        Click to browse or drop flower specimen here
+                    </p>
+                    <p class="text-xs text-gray-400 font-light mb-3">
+                        High-resolution botanical photographs work best
+                    </p>
+
+                    <!-- Format pills -->
+                    <div class="flex items-center gap-2 text-[10px] text-gray-400">
+                        <span class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10">JPEG, PNG, WEBP</span>
+                        <span>&bull;</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10">Up to 10 MB</span>
+                    </div>
+                </div>
+
+                <!-- 🔬 Preview Container with Scanner Overlay & Remove Button (Shown after selection) -->
+                <div id="previewContainer" class="relative hidden mb-5 group overflow-hidden rounded-2xl border border-gray-700/80 shadow-2xl bg-gray-950">
+                    <img id="preview" class="w-full h-72 sm:h-80 object-cover rounded-2xl transition duration-300" />
+                    
+                    <!-- Laser Scanner Overlay (Active during prediction) -->
+                    <div id="scannerOverlay" class="absolute inset-0 pointer-events-none hidden bg-purple-950/30 backdrop-blur-[1px] hologram-grid">
+                        <div class="scanner-laser"></div>
+                        <!-- Reticle Corners -->
+                        <div class="corner-reticle top-3 left-3 border-t-2 border-l-2"></div>
+                        <div class="corner-reticle top-3 right-3 border-t-2 border-r-2"></div>
+                        <div class="corner-reticle bottom-3 left-3 border-b-2 border-l-2"></div>
+                        <div class="corner-reticle bottom-3 right-3 border-b-2 border-r-2"></div>
+                        
+                        <!-- Floating Live Diagnostic Ticker -->
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-black/90 backdrop-blur-md border border-purple-400/50 text-[11px] font-mono-code text-purple-200 flex items-center gap-2.5 shadow-2xl z-30 whitespace-nowrap">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            <span id="scannerStatusText" class="tracking-wide">Scanning morphology...</span>
+                        </div>
+                    </div>
+
+                    <!-- Image Overlay Controls -->
+                    <div class="absolute top-3 right-3 flex items-center gap-2 z-30">
+                        <button type="button" onclick="document.getElementById('fileInput').click()"
+                            class="px-3 py-1.5 rounded-xl bg-gray-900/85 backdrop-blur border border-white/15 text-xs font-semibold text-gray-200 hover:text-white hover:bg-white/10 transition shadow active:scale-95">
+                            ↺ Change
+                        </button>
+                        <button id="clearBtn" type="button" title="Remove image"
+                            class="px-3 py-1.5 rounded-xl bg-gray-900/85 backdrop-blur border border-white/15 text-xs font-semibold text-rose-300 hover:text-white hover:bg-rose-600 transition shadow active:scale-95">
+                            ✕ Remove
+                        </button>
+                    </div>
+
+                    <div class="absolute bottom-3 left-3 px-3 py-1 rounded-xl bg-black/75 backdrop-blur-md border border-white/10 text-[11px] text-gray-300 font-medium">
+                        Ready for neural analysis
+                    </div>
+                </div>
+
+                <!-- Hidden Native File Input -->
+                <input id="fileInput" type="file" accept="image/*" class="hidden" />
+
+                <!-- ⚡ Quick Test Specimen Strip -->
+                <div class="mb-6 pt-4 border-t border-white/5">
+                    <div class="text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-3 flex items-center justify-between">
+                        <span>⚡ One-Click Verified Flora Samples</span>
+                        <span class="text-gray-500 text-[10px]">Instant test specimens</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        <button type="button" onclick="loadSampleFlower('hibiscus')"
+                            class="p-2.5 rounded-xl blur-card-subtle hover:bg-white/10 hover:border-purple-400/40 transition text-left group active:scale-95 flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-xs text-white group-hover:text-yellow-300 transition">Hibiscus</span>
+                                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 italic">H. rosa-sinensis</span>
+                        </button>
+
+                        <button type="button" onclick="loadSampleFlower('sunflower')"
+                            class="p-2.5 rounded-xl blur-card-subtle hover:bg-white/10 hover:border-amber-400/40 transition text-left group active:scale-95 flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-xs text-white group-hover:text-yellow-300 transition">Sunflower</span>
+                                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 italic">H. annuus</span>
+                        </button>
+
+                        <button type="button" onclick="loadSampleFlower('rose')"
+                            class="p-2.5 rounded-xl blur-card-subtle hover:bg-white/10 hover:border-rose-400/40 transition text-left group active:scale-95 flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-xs text-white group-hover:text-yellow-300 transition">Rose</span>
+                                <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 italic">R. indica</span>
+                        </button>
+
+                        <button type="button" onclick="loadSampleFlower('lotus')"
+                            class="p-2.5 rounded-xl blur-card-subtle hover:bg-white/10 hover:border-teal-400/40 transition text-left group active:scale-95 flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-bold text-xs text-white group-hover:text-yellow-300 transition">Lotus</span>
+                                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 italic">N. nucifera</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Primary Action Button -->
+                <button id="predictBtn"
+                    class="w-full py-4 rounded-2xl font-bold text-sm sm:text-base bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 hover:opacity-95 hover:shadow-2xl hover:shadow-purple-500/40 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2.5 shadow-xl shadow-purple-500/25 relative overflow-hidden group shine-btn">
+                    <span class="relative z-10 flex items-center gap-2.5" id="btnContent">
+                        <svg class="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                        </svg>
+                        <span id="btnText">Execute Prediction</span>
+                    </span>
+                </button>
+
+                <p id="errorMsg" class="hidden text-rose-400 text-xs mt-3.5 font-medium"></p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ================================================================= -->
+    <!-- 🌺 STAGE 2: AFTER PREDICTION (LUXURY SIDE-BY-SIDE INTELLIGENCE SUITE) -->
+    <!-- LEFT: Uploaded Specimen | RIGHT: Predicted Details                -->
+    <!-- ================================================================= -->
+    <div id="resultSection" class="hidden max-w-7xl mx-auto px-4 sm:px-6 w-full mt-4 mb-12 relative z-10 fade-in">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+
+            <!-- 🌸 [LEFT SIDE]: SPECIMEN STUDIO VIEW (col-span-5, sticky) -->
+            <div class="lg:col-span-5 w-full lg:sticky lg:top-6">
+                <div class="blur-card p-6 sm:p-7 rounded-3xl text-center shadow-2xl border border-white/10 relative overflow-hidden">
+
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <h3 class="text-lg font-bold text-yellow-300 tracking-tight">
+                                Specimen Image
+                            </h3>
+                        </div>
+                        <span id="resultFilePill"
+                            class="text-[11px] px-3 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 font-medium truncate max-w-[170px]">
+                            Specimen Photo
+                        </span>
+                    </div>
+
+                    <!-- Uploaded Specimen High-Res Framing -->
+                    <div class="relative overflow-hidden rounded-2xl border border-gray-700/80 shadow-2xl bg-gray-950 mb-5 group">
+                        <img id="resultImage" class="w-full h-80 sm:h-96 object-cover rounded-2xl transition duration-300 group-hover:scale-105" />
+                        
+                        <!-- Studio Watermark Badge -->
+                        <div class="absolute bottom-3 left-3 px-3 py-1.5 bg-black/80 backdrop-blur-md rounded-xl text-xs text-yellow-300 font-semibold border border-yellow-300/30 flex items-center gap-1.5 shadow-lg">
+                            <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Input Verified</span>
+                        </div>
+                    </div>
+
+                    <!-- Scan Another Specimen Button -->
+                    <button id="reuploadBtn" type="button"
+                        class="w-full py-3.5 rounded-2xl text-xs sm:text-sm font-semibold text-yellow-300 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-yellow-300/40 transition shadow-sm inline-flex items-center justify-center gap-2 active:scale-95 group">
+                        <svg class="w-4 h-4 transition-transform group-hover:-rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                        <span>Scan Another Flower</span>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- 🌸 [RIGHT SIDE]: PREDICTION INTELLIGENCE REPORT (col-span-7) -->
+            <div class="lg:col-span-7 w-full">
+                <div class="blur-card p-6 sm:p-9 rounded-3xl shadow-2xl relative overflow-hidden">
+
+                    <!-- Top Bar with Diagnostic Report ID & Actions -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">
+                        <div>
+                            <span class="text-[10px] uppercase font-semibold tracking-wider text-purple-300 font-mono-code">
+                                Diagnostic Report &bull; AI Identified
+                            </span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-300 to-amber-300 tracking-tight leading-tight">
+                                Botanical Classification
+                            </h3>
+                        </div>
+
+                        <!-- Actions: Copy & Print -->
+                        <div class="flex items-center gap-2">
+                            <button id="copyBtn"
+                                class="text-xs px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition flex items-center gap-1.5 active:scale-95 shadow-sm"
+                                title="Copy summary to clipboard">
+                                <svg class="w-3.5 h-3.5 text-purple-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 17.25v2.25A2.25 2.25 0 0113.5 21.75h-7.5A2.25 2.25 0 013.75 19.5V7.5a2.25 2.25 0 012.25-2.25h2.25m3 0V3.75A2.25 2.25 0 0113.5 1.5h7.5A2.25 2.25 0 0123.25 3.75v12a2.25 2.25 0 01-2.25 2.25h-2.25m-6-10.5h6" />
+                                </svg>
+                                <span id="copyText">Copy Data</span>
+                            </button>
+
+                            <button id="printBtn" onclick="window.print()"
+                                class="text-xs px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition flex items-center gap-1.5 active:scale-95 shadow-sm"
+                                title="Print report sheet">
+                                <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.72 13.829c-.24-1.258-1.72-2.029-2.72-2.029h-.5c-.828 0-1.5.672-1.5 1.5v6c0 .828.672 1.5 1.5 1.5h17c.828 0 1.5-.672 1.5-1.5v-6c0-.828-.672-1.5-1.5-1.5h-.5c-1 0-2.48.771-2.72 2.029" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6 9V4.5A1.5 1.5 0 017.5 3h9A1.5 1.5 0 0118 4.5V9" />
+                                </svg>
+                                <span>Print Sheet</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 🌺 Match Hero Showcase Card (Clean Specimen Showcase, No Confidence Score) -->
+                    <div class="p-5 sm:p-6 rounded-2xl bg-gray-900/50 border border-gray-700/70 mb-6 relative overflow-hidden group flex items-center justify-between">
+                        <div>
+                            <span class="text-gray-400 text-xs uppercase tracking-wider font-semibold block">
+                                Identified Specimen
+                            </span>
+                            <div id="resLabel" class="font-extrabold text-white text-3xl sm:text-4xl capitalize leading-tight mt-1 tracking-tight"></div>
+                        </div>
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>Verified Specimen</span>
+                        </div>
+                    </div>
+
+                    <!-- 🏛️ LINNAEAN TAXONOMY HIERARCHY -->
+                    <div class="mb-6">
+                        <div class="mb-3 flex items-center justify-between">
+                            <h4 class="text-xs font-semibold uppercase tracking-wider text-yellow-300/90 flex items-center gap-2">
+                                <span>🏛️ Linnaean Taxonomy Hierarchy</span>
+                            </h4>
+                            <span class="text-[10px] text-gray-400 font-mono-code">Rank Tiered</span>
+                        </div>
+                        <div id="taxonomyBox" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm"></div>
+                    </div>
+
+                    <!-- ✅ PROMPT: "Do you want to see floral formula, diagram, description?" -->
+                    <div id="showImagesPrompt" class="mt-6 pt-5 border-t border-gray-700/60 hidden">
+                        <div class="p-4 rounded-2xl bg-gradient-to-r from-purple-900/20 via-purple-900/10 to-transparent border border-purple-500/30">
+                            <p class="font-semibold text-sm mb-1 text-gray-100 flex items-center gap-2">
+                                <span>🔍</span> Explore Detailed Floral Anatomy?
+                            </p>
+                            <p class="text-xs text-gray-400 mb-4 font-light">
+                                Unlock standardized Linnaean shorthand formula, high-resolution floral diagram, and comprehensive botanical description.
+                            </p>
+                            <div class="flex gap-3">
+                                <button id="yesBtn"
+                                    class="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl font-medium text-xs sm:text-sm transition shadow-lg shadow-emerald-950/40 active:scale-95 flex items-center gap-2">
+                                    <span>Yes, Unlock Anatomy</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
+                                <button id="noBtn"
+                                    class="px-5 py-2.5 bg-gray-800/80 hover:bg-gray-700 text-gray-300 hover:text-white rounded-xl font-medium text-xs sm:text-sm transition border border-white/10 active:scale-95">
+                                    No, Keep Collapsed
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 🌺 ANATOMY LABORATORY CONTAINER (Formula & Diagram) -->
+                    <div id="imagesContainer"
+                        class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6 hidden pt-5 border-t border-gray-700/60 fade-in">
+                        <!-- Floral Formula Box -->
+                        <div class="p-4 rounded-2xl bg-gray-900/40 border border-gray-700/70">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-semibold text-xs text-yellow-300 uppercase tracking-wider flex items-center gap-1.5">
+                                    <span>🧪</span> Floral Formula
+                                </p>
+                                <span class="text-[10px] text-purple-300 bg-purple-500/15 border border-purple-500/30 px-2 py-0.5 rounded-full font-medium">Shorthand</span>
+                            </div>
+                            
+                            <div id="formulaText"
+                                class="p-4 bg-gray-950/80 rounded-2xl border border-purple-500/30 text-center font-mono-code text-amber-300 text-sm hidden shadow-inner tracking-wider">
+                            </div>
+                            <img id="formulaImg"
+                                class="rounded-2xl border border-gray-700/80 w-full object-contain max-h-52 hidden shadow-md bg-gray-950" />
+
+                            <!-- Interactive Symbol Breakdown Chips -->
+                            <div id="formulaGuideBox" class="mt-3 hidden">
+                                <div class="text-[10px] uppercase font-semibold text-gray-400 mb-1.5 flex items-center justify-between">
+                                    <span>💡 Botanical Key</span>
+                                    <span class="text-gray-500">Tap to inspect</span>
+                                </div>
+                                <div id="formulaBreakdown" class="flex flex-wrap gap-1.5"></div>
+                            </div>
+                        </div>
+
+                        <!-- Floral Diagram Box -->
+                        <div class="p-4 rounded-2xl bg-gray-900/40 border border-gray-700/70">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-semibold text-xs text-yellow-300 uppercase tracking-wider flex items-center gap-1.5">
+                                    <span>📐</span> Floral Diagram
+                                </p>
+                                <span class="text-[10px] text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full font-medium">Zoomable</span>
+                            </div>
+                            <div class="relative group cursor-zoom-in overflow-hidden rounded-2xl border border-gray-700/80 bg-gray-950 shadow-md">
+                                <img id="diagramImg"
+                                    class="w-full object-contain max-h-52 p-2 group-hover:scale-105 transition duration-300" />
+                                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                                    <span class="px-3.5 py-1.5 bg-black/85 backdrop-blur-md rounded-xl text-xs text-yellow-300 font-semibold border border-yellow-300/30 flex items-center gap-1.5 shadow-xl">
+                                        🔍 Inspect High-Res
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 🧠 BOTANICAL PROFILE DESCRIPTION -->
+                    <div id="llmDescription"
+                        class="mt-6 text-gray-300 text-sm leading-relaxed hidden pt-5 border-t border-gray-700/60 fade-in">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-semibold text-yellow-300 flex items-center gap-2">
+                                <span>📖</span> Botanical Description
+                            </h4>
+                            <!-- Speech synthesis listen button -->
+                            <button id="speakBtn" type="button"
+                                class="text-xs px-3 py-1.5 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/10 hover:border-purple-400/40 text-gray-200 hover:text-white transition flex items-center gap-1.5 shadow-sm active:scale-95"
+                                title="Read description aloud">
+                                <span id="speakIcon">🔊</span>
+                                <span id="speakLabel" class="font-medium">Listen</span>
+                            </button>
+                        </div>
+                        <p id="descText" class="bg-gray-900/50 p-4 sm:p-5 rounded-2xl border border-gray-700/60 font-light leading-relaxed text-gray-200"></p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lightbox Zoom Modal for Floral Diagram -->
+    <div id="diagramModal"
+        class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6">
+        <div
+            class="relative max-w-4xl w-full bg-gray-900/95 border border-purple-500/30 rounded-3xl p-4 sm:p-6 shadow-2xl flex flex-col items-center">
+            <button id="closeModal"
+                class="absolute top-4 right-4 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition active:scale-95 z-20">
+                ✕
+            </button>
+            <div class="flex items-center gap-2 mb-3 self-start">
+                <span class="text-base">📐</span>
+                <p class="text-sm font-semibold text-yellow-300">Botanical Floral Diagram &bull; High-Resolution Diagnostic Inspection</p>
+            </div>
+            <div class="w-full flex items-center justify-center overflow-auto max-h-[82vh] rounded-2xl bg-[#080d1a] border border-gray-800 p-2 shadow-inner">
+                <img id="modalImg" class="max-h-[78vh] w-auto object-contain rounded-xl" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Clean Luxury Footer -->
+    <footer class="text-center py-5 mt-auto text-gray-500 text-xs relative z-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between px-6 sm:px-10 gap-2">
+        <span>© 2026 TaxoBloom Botanical Platform &bull; All rights reserved</span>
+        <div class="flex items-center gap-4 text-gray-400">
+            <a href="/dashboard" class="hover:text-yellow-300 transition">Dashboard</a>
+            <span>&bull;</span>
+            <span class="text-emerald-400 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>Neural Net Active</span>
+            </span>
+        </div>
+    </footer>
+
+    <!-- ============================================================= -->
+    <!-- 🌿 JAVASCRIPT: PREDICTION FLOW, CANVASES & ANIMATIONS         -->
+    <!-- ============================================================= -->
+    <script>
+        const fileInput = document.getElementById("fileInput");
+        const preview = document.getElementById("preview");
+        const previewContainer = document.getElementById("previewContainer");
+        const dropzoneArea = document.getElementById("dropzoneArea");
+        const scannerOverlay = document.getElementById("scannerOverlay");
+        const scannerStatusText = document.getElementById("scannerStatusText");
+        const clearBtn = document.getElementById("clearBtn");
+        const filePill = document.getElementById("filePill");
+        const predictBtn = document.getElementById("predictBtn");
+        const btnText = document.getElementById("btnText");
+        const errorMsg = document.getElementById("errorMsg");
+        const dropBox = document.getElementById("dropBox");
+
+        // Two Stages: Upload Section vs Side-by-Side Result Section
+        const uploadSection = document.getElementById("uploadSection");
+        const resultSection = document.getElementById("resultSection");
+        const resultImage = document.getElementById("resultImage");
+        const resultFilePill = document.getElementById("resultFilePill");
+        const reuploadBtn = document.getElementById("reuploadBtn");
+
+        // 1. 🌸 Floating Botanical Blossom Petals Canvas Animation
+        const canvas = document.getElementById("petalCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener("resize", () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Petal {
+            constructor() {
+                this.reset(true);
+            }
+
+            reset(initial = false) {
+                this.x = Math.random() * width;
+                this.y = initial ? Math.random() * height : -20;
+                this.size = Math.random() * 6 + 4;
+                this.speedY = Math.random() * 0.8 + 0.4;
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = (Math.random() - 0.5) * 0.03;
+                this.opacity = Math.random() * 0.22 + 0.1;
+
+                const colors = [
+                    "rgba(244, 114, 182, ", // soft pink
+                    "rgba(192, 132, 252, ", // purple
+                    "rgba(253, 224, 71, ",  // amber gold
+                    "rgba(52, 211, 153, "   // mint
+                ];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.angle) * 0.4;
+                this.angle += this.spin;
+
+                if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
+                    this.reset(false);
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = this.color + this.opacity + ")";
+                
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(this.size * 0.8, -this.size * 1.2, this.size, 0);
+                ctx.quadraticCurveTo(this.size * 0.8, this.size * 1.2, 0, 0);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const petals = Array.from({ length: 28 }, () => new Petal());
+
+        function animatePetals() {
+            ctx.clearRect(0, 0, width, height);
+            petals.forEach(petal => {
+                petal.update();
+                petal.draw();
+            });
+            requestAnimationFrame(animatePetals);
+        }
+        animatePetals();
+
+
+        // 2. Curated Sample Photos for 1-Click Instant Testing
+        const SAMPLE_PHOTOS = {
+            hibiscus: "https://images.unsplash.com/photo-1596728325488-58c87691e9af?auto=format&fit=crop&w=600&q=80",
+            sunflower: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=600&q=80",
+            rose: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+            lotus: "https://images.unsplash.com/photo-1508615039623-a25605d2b022?auto=format&fit=crop&w=600&q=80"
+        };
+
+        async function loadSampleFlower(species) {
+            const url = SAMPLE_PHOTOS[species];
+            if (!url) return;
+            try {
+                btnText.textContent = `Loading ${species}...`;
+                const res = await fetch(url);
+                const blob = await res.blob();
+                const file = new File([blob], `${species}_specimen.jpg`, { type: "image/jpeg" });
+
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                fileInput.files = dataTransfer.files;
+                handleFile(file);
+            } catch (err) {
+                console.error(err);
+                errorMsg.textContent = "Could not load sample flower. Please browse an image manually.";
+                errorMsg.classList.remove("hidden");
+            } finally {
+                btnText.textContent = "Execute Prediction";
+            }
+        }
+
+        // File Preview & Selection Handler
+        function handleFile(file) {
+            if (!file || !file.type.startsWith("image/")) {
+                errorMsg.textContent = "Please select a valid image file (JPEG, PNG, WEBP).";
+                errorMsg.classList.remove("hidden");
+                return;
+            }
+            preview.src = URL.createObjectURL(file);
+            previewContainer.classList.remove("hidden");
+            dropzoneArea.classList.add("hidden");
+            const sizeKB = (file.size / 1024).toFixed(1);
+            filePill.textContent = `${file.name} (${sizeKB} KB)`;
+            filePill.classList.remove("hidden");
+            errorMsg.classList.add("hidden");
+        }
+
+        fileInput.onchange = () => {
+            if (fileInput.files && fileInput.files[0]) {
+                handleFile(fileInput.files[0]);
+            }
+        };
+
+        clearBtn.onclick = (e) => {
+            e.stopPropagation();
+            fileInput.value = "";
+            preview.src = "";
+            previewContainer.classList.add("hidden");
+            dropzoneArea.classList.remove("hidden");
+            scannerOverlay.classList.add("hidden");
+            filePill.classList.add("hidden");
+            errorMsg.classList.add("hidden");
+        };
+
+        // Drag and Drop
+        ['dragenter', 'dragover'].forEach(name => {
+            dropBox.addEventListener(name, (e) => {
+                e.preventDefault();
+                dropBox.classList.add("dropzone-active");
+            });
+        });
+
+        ['dragleave', 'drop'].forEach(name => {
+            dropBox.addEventListener(name, (e) => {
+                e.preventDefault();
+                dropBox.classList.remove("dropzone-active");
+            });
+        });
+
+        dropBox.addEventListener("drop", (e) => {
+            const files = e.dataTransfer.files;
+            if (files && files[0]) {
+                fileInput.files = files;
+                handleFile(files[0]);
+            }
+        });
+
+        // Botanical Symbols Dictionary for Interactive Decoder
+        const BOTANICAL_SYMBOLS = {
+            "⊕": "Actinomorphic (Radially Symmetrical)",
+            "%": "Zygomorphic (Bilaterally Symmetrical)",
+            "⚥": "Bisexual / Hermaphrodite Flower",
+            "♂": "Unisexual Male (Staminate)",
+            "♀": "Unisexual Female (Pistillate)",
+            "Epk": "Epicalyx (Bracteoles below calyx)",
+            "K": "Calyx (Sepals)",
+            "C": "Corolla (Petals)",
+            "P": "Perianth (Tepals / Undifferentiated)",
+            "A": "Androecium (Stamens)",
+            "G": "Gynoecium (Carpels / Pistil)",
+            "∞": "Infinite / Numerous Stamens (>10)",
+            "₍": "Fused / United parts (Cohesion)",
+            "(": "Fused / United parts (Cohesion)"
+        };
+
+        function renderFormulaBreakdown(formula) {
+            const guideBox = document.getElementById("formulaGuideBox");
+            const breakdown = document.getElementById("formulaBreakdown");
+            breakdown.innerHTML = "";
+
+            if (!formula) {
+                guideBox.classList.add("hidden");
+                return;
+            }
+
+            const matchedKeys = new Set();
+            for (const [sym, desc] of Object.entries(BOTANICAL_SYMBOLS)) {
+                if (formula.includes(sym) && !matchedKeys.has(desc)) {
+                    matchedKeys.add(desc);
+                    const chip = document.createElement("span");
+                    chip.className = "px-2.5 py-1 rounded-lg text-xs bg-purple-500/15 border border-purple-400/30 text-purple-200 cursor-help transition hover:bg-purple-500/30 hover:scale-105 active:scale-95 shadow-sm inline-flex items-center gap-1.5";
+                    chip.title = desc;
+                    chip.innerHTML = `<b class="text-yellow-300 font-mono-code">${sym}</b> <span>${desc}</span>`;
+                    breakdown.appendChild(chip);
+                }
+            }
+
+            if (breakdown.children.length > 0) {
+                guideBox.classList.remove("hidden");
+            } else {
+                guideBox.classList.add("hidden");
+            }
+        }
+
+        // Petal Burst Celebration
+        function triggerBloomCelebration() {
+            if (typeof confetti === "function") {
+                confetti({
+                    particleCount: 55,
+                    spread: 75,
+                    origin: { y: 0.6 },
+                    colors: ["#f472b6", "#c084fc", "#fde047", "#34d399", "#a78bfa"],
+                    disableForReducedMotion: true
+                });
+            }
+        }
+
+        // Diagnostic Step Ticker during Prediction
+        const SCAN_STEPS = [
+            "Scanning corolla contour...",
+            "Analyzing petal symmetry...",
+            "Matching Linnaean taxonomy...",
+            "Synthesizing floral formula..."
+        ];
+
+        // Predict Trigger
+        predictBtn.onclick = async () => {
+            if (!fileInput.files.length) {
+                errorMsg.textContent = "Please upload or select a flower image first.";
+                errorMsg.classList.remove("hidden");
+                return;
+            }
+
+            errorMsg.classList.add("hidden");
+            predictBtn.disabled = true;
+
+            // Activate scanner overlay
+            scannerOverlay.classList.remove("hidden");
+            let stepIdx = 0;
+            scannerStatusText.textContent = SCAN_STEPS[0];
+            btnText.textContent = SCAN_STEPS[0];
+
+            const scanInterval = setInterval(() => {
+                stepIdx = (stepIdx + 1) % SCAN_STEPS.length;
+                scannerStatusText.textContent = SCAN_STEPS[stepIdx];
+                btnText.textContent = SCAN_STEPS[stepIdx];
+            }, 600);
+
+            const formData = new FormData();
+            formData.append("image", fileInput.files[0]);
+
+            try {
+                const res = await fetch("/predict", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await res.json();
+                clearInterval(scanInterval);
+                scannerOverlay.classList.add("hidden");
+                showResult(data);
+
+            } catch (err) {
+                clearInterval(scanInterval);
+                scannerOverlay.classList.add("hidden");
+                errorMsg.textContent = "Classification server error. Please try again.";
+                errorMsg.classList.remove("hidden");
+            }
+
+            predictBtn.disabled = false;
+            btnText.textContent = "Execute Prediction";
+        };
+
+        let currentResultData = null;
+
+        function showResult(data) {
+            currentResultData = data;
+            
+            // 🌟 1. Transfer preview image to the LEFT side of result view
+            resultImage.src = preview.src;
+            if (fileInput.files && fileInput.files[0]) {
+                resultFilePill.textContent = fileInput.files[0].name;
+            } else {
+                resultFilePill.textContent = "Specimen Photo";
+            }
+
+            // 🌟 2. Switch from Upload Card to Side-by-Side Result View
+            uploadSection.classList.add("hidden");
+            resultSection.classList.remove("hidden");
+
+            // 🌟 3. Populate RIGHT side details
+            document.getElementById("resLabel").textContent = data.predicted_label;
+
+            // Trigger celebration confetti
+            triggerBloomCelebration();
+
+            // Populate Taxonomy Hierarchy Grid with luxury taxonomic cards
+            const taxonomyBox = document.getElementById("taxonomyBox");
+            taxonomyBox.innerHTML = "";
+
+            if (data.details) {
+                const rankIcons = {
+                    "kingdom": "👑",
+                    "division": "🌿",
+                    "flower_class": "☘️",
+                    "flower_order": "🌾",
+                    "flower_family": "🌺",
+                    "genus": "🔬",
+                    "species": "🧬",
+                    "scientific_name": "✨"
+                };
+
+                for (const [k, v] of Object.entries(data.details)) {
+                    if (!v) continue;
+                    if (k.includes("floral")) continue;
+
+                    const icon = rankIcons[k.toLowerCase()] || "🏛️";
+                    const formattedKey = k.replace("flower_", "").replace("_", " ");
+
+                    taxonomyBox.innerHTML += `
+                        <div class="p-3 px-3.5 rounded-xl bg-gray-900/50 hover:bg-gray-900/80 border border-gray-700/60 hover:border-yellow-300/40 flex justify-between items-center transition group shadow-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs opacity-75">${icon}</span>
+                                <span class="text-gray-400 capitalize text-xs font-medium group-hover:text-gray-300 transition">
+                                    ${formattedKey}:
+                                </span>
+                            </div>
+                            <span class="font-semibold text-white text-xs sm:text-sm group-hover:text-yellow-300 transition tracking-wide text-right">${v}</span>
+                        </div>
+                    `;
+                }
+
+                // Floral Formula
+                const formulaVal = data.details.floral_formula || "";
+                const formulaImg = document.getElementById("formulaImg");
+                const formulaText = document.getElementById("formulaText");
+
+                if (formulaVal.startsWith("/") || formulaVal.startsWith("http")) {
+                    formulaImg.src = formulaVal;
+                    formulaImg.classList.remove("hidden");
+                    formulaText.classList.add("hidden");
+                    renderFormulaBreakdown("");
+                } else if (formulaVal) {
+                    formulaText.textContent = formulaVal;
+                    formulaText.classList.remove("hidden");
+                    formulaImg.classList.add("hidden");
+                    renderFormulaBreakdown(formulaVal);
+                }
+
+                // Floral Diagram
+                const diagramSrc = data.details.floral_diagram || "";
+                document.getElementById("diagramImg").src = diagramSrc;
+            }
+
+            // Description
+            document.getElementById("descText").textContent = data.description || "Botanical specimen profile verified against taxonomic database.";
+
+            // Prompt handling (Yes / No)
+            document.getElementById("showImagesPrompt").classList.remove("hidden");
+            document.getElementById("imagesContainer").classList.add("hidden");
+            document.getElementById("llmDescription").classList.add("hidden");
+
+            document.getElementById("yesBtn").onclick = () => {
+                document.getElementById("imagesContainer").classList.remove("hidden");
+                document.getElementById("llmDescription").classList.remove("hidden");
+                document.getElementById("showImagesPrompt").classList.add("hidden");
+                document.getElementById("imagesContainer").scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            };
+
+            document.getElementById("noBtn").onclick = () => {
+                document.getElementById("imagesContainer").classList.add("hidden");
+                document.getElementById("llmDescription").classList.add("hidden");
+                document.getElementById("showImagesPrompt").classList.add("hidden");
+            };
+
+            // Smooth scroll to top of result
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Copy Summary to Clipboard
+        document.getElementById("copyBtn").addEventListener("click", () => {
+            if (!currentResultData) return;
+            const label = currentResultData.predicted_label;
+            const text = `TaxoBloom Botanical Diagnosis:\nSpecimen: ${label}`;
+            navigator.clipboard.writeText(text);
+            const copyText = document.getElementById("copyText");
+            copyText.textContent = "Copied!";
+            setTimeout(() => { copyText.textContent = "Copy Data"; }, 2000);
+        });
+
+        // Speech Synthesis Read Aloud
+        const speakBtn = document.getElementById("speakBtn");
+        const speakIcon = document.getElementById("speakIcon");
+        const speakLabel = document.getElementById("speakLabel");
+
+        speakBtn.addEventListener("click", () => {
+            const desc = document.getElementById("descText").textContent;
+            if (!desc || !('speechSynthesis' in window)) return;
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                speakIcon.textContent = "🔊";
+                speakLabel.textContent = "Listen";
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(desc);
+            utterance.rate = 0.95;
+            utterance.pitch = 1.0;
+
+            utterance.onstart = () => {
+                speakIcon.textContent = "⏹️";
+                speakLabel.textContent = "Stop";
+            };
+            utterance.onend = utterance.onerror = () => {
+                speakIcon.textContent = "🔊";
+                speakLabel.textContent = "Listen";
+            };
+
+            window.speechSynthesis.speak(utterance);
+        });
+
+        // Scan Another Specimen Reset
+        reuploadBtn.addEventListener("click", () => {
+            fileInput.value = "";
+            preview.src = "";
+            previewContainer.classList.add("hidden");
+            dropzoneArea.classList.remove("hidden");
+            scannerOverlay.classList.add("hidden");
+            filePill.classList.add("hidden");
+            
+            resultSection.classList.add("hidden");
+            uploadSection.classList.remove("hidden");
+            
+            if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            uploadSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Lightbox modal for floral diagram
+        const diagramImg = document.getElementById("diagramImg");
+        const modal = document.getElementById("diagramModal");
+        const modalImg = document.getElementById("modalImg");
+        const closeModal = document.getElementById("closeModal");
+
+        diagramImg.addEventListener("click", () => {
+            if (diagramImg.src) {
+                modalImg.src = diagramImg.src;
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+            }
+        });
+
+        closeModal.addEventListener("click", () => {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

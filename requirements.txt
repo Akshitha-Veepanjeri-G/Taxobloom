@@ -1,0 +1,22 @@
+# ==============================================================================
+# TaxoBloom - Python Dependencies
+# ==============================================================================
+
+# Web Framework & API
+Flask==3.1.2
+Flask-Cors==6.0.1
+
+# Machine Learning & Computer Vision
+tensorflow==2.20.0
+numpy==2.2.6
+pillow==11.3.0
+
+# Database Connectivity
+psycopg2-binary==2.9.11
+
+# LLM & AI Description
+openai==2.9.0
+
+# Environment & Utilities
+python-dotenv==1.2.1
+requests==2.32.5
